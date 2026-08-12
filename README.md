@@ -1,7 +1,9 @@
 # jlgmapapp-backend
 Joe Louis Greenway Map Application- Backend 
 
-# JLG Map App — Backend (This Read Me File is subject to change!!)
+(This Read Me File is subject to change!!)
+
+# JLG Map App — Backend 
 
 API and database services for the **Joe Louis Greenway Map App** — supports the frontend
 
