@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: JLG Map App API
+  version: "1.0"
+paths:
+  /api/v1/segments:
+    get:
+      operationId: getSegments
+      summary: Route segments
+      responses:
+        "200":
+          description: >
+            GeoJSON FeatureCollection of route segment LineStrings.
+            Coordinates are WGS 84 (EPSG:4326), longitude then latitude — RFC 7946 §4.
+          content:
+            application/geo+json:
+              schema:
+                type: object
+                required: [type, features]
+                properties:
+                  type:
+                    type: string
+                    enum: [FeatureCollection]
+                  features:
+                    type: array
+                    items:
+                      type: object
+                      required: [type, geometry, properties]
+                      properties:
+                        type:
+                          type: string
+                          enum: [Feature]
+                        geometry:
+                          type: object
+                          required: [type, coordinates]
+                          properties:
+                            type:
+                              type: string
+                              enum: [LineString]
+                            coordinates:
+                              type: array
+                              items:
+                                type: array
+                                items: { type: number }
+                                minItems: 2
+                                maxItems: 2
+                        properties:
+                          type: object
+                          required: [segment_id, phase, type]
+                          properties:
+                            segment_id: { type: string }
+                            phase:
+                              type: string
+                              description: Segment status (FR-05) — ADR-001 §4.8
+                            type:
+                              type: string
+                              description: Segment type (FR-06) — ADR-001 §4.8
