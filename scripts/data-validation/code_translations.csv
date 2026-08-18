@@ -1,0 +1,31 @@
+Domain,Source value,Normalized code,Lookup table,Rule / description,Review required?
+route_phase,0,open,core.route_phase,Open,No
+route_phase,1,under_construction,core.route_phase,Under Construction,No
+route_phase,2,funded,core.route_phase,Funded,No
+route_phase,3,unfunded,core.route_phase,Unfunded,No
+route_typology,Adjacent,adjacent,core.segment_type,,No
+route_typology,Alley,alley,core.segment_type,,No
+route_typology,Bridge,bridge,core.segment_type,,No
+route_typology,Off-Street,off_street,core.segment_type,,No
+route_typology,On-Street,on_street,core.segment_type,,No
+route_typology,Shared street,shared_street,core.segment_type,,No
+poi_type,restroom,restroom,core.poi_type,,No
+poi_type,landmark,landmark,core.poi_type,,No
+poi_type,park,park,core.poi_type,,No
+coordinate_confidence,Exact,exact,,,No
+coordinate_confidence,Non_Exact,non_exact,,,No
+coordinate_confidence,High / high / resolved,high,,Case-insensitive; resolved maps to high,No
+coordinate_confidence,Medium / medium / resolved_approx,medium,,Case-insensitive,No
+coordinate_confidence,Low / low,low,,Case-insensitive,No
+coordinate_confidence,resolved_merged,merged_needs_review,,Shared centroid; manual separation required,Yes
+coordinate_confidence,Unresolved,unresolved,,Do not publish,Yes
+access_tier,major,major,,,No
+access_tier,major (pavilion),major_pavilion,,,No
+access_tier,minor,minor,,,No
+access_tier,TBD_framework_map,[NULL],,Do not guess,Yes
+built_status,likely_existing,likely_existing,,,No
+built_status,proposed_or_existing_TBD,[NULL],,Do not guess,Yes
+review_flag,[blank],false,,,No
+review_flag,check / YES / any nonblank text,true,,Preserve original text in provenance,Yes
+load_status,have,eligible,,Can continue to validation,No
+load_status,pending_manual_review,quarantine,,Must not publish,Yes
