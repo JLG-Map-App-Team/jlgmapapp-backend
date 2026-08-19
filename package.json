@@ -4,11 +4,19 @@
   "private": true,
   "description": "Backend services and ETL tooling for the Joe Louis Greenway map application.",
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
-    "generate:types": "openapi-typescript openapi.yaml -o src/types/api.ts"
+    "lint:api": "redocly lint",
+    "gen:api": "openapi-typescript",
+    "gen:api:check": "node scripts/check-api-types-fresh.mjs",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck"
   },
   "devDependencies": {
-    "openapi-typescript": "^7.13.0",
-    "typescript": "^5.9.3"
+    "@redocly/cli": "2.46.2",
+    "openapi-typescript": "7.13.0",
+    "typescript": "5.9.3"
   }
 }
