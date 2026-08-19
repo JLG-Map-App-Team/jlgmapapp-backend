@@ -10,9 +10,16 @@
   "scripts": {
     "lint:api": "redocly lint",
     "gen:api": "openapi-typescript",
+    "seed:build": "node scripts/seed/build-segments-seed.mjs",
     "gen:api:check": "node scripts/check-api-types-fresh.mjs",
     "typecheck": "tsc --noEmit",
-    "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck"
+    "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "migrate": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
+    "migrate:rollback": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations rollback",
+    "migrate:status": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations status",
+    "migrate:new": "dbmate --migrations-dir ./src/database/migrations new"
   },
   "devDependencies": {
     "@redocly/cli": "2.46.2",

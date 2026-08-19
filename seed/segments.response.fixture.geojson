@@ -181,13 +181,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "1",
-    "name": "Dequindre Cut/Detroit Riverwalk",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "1",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -214,13 +212,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "2",
-    "name": "Dequindre Cut Extension (E. Warren to Mack)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "2",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -239,13 +235,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "3",
-    "name": "Jos Campau (Holbrook to Hamtramck Drive)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "3",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -272,13 +266,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "4",
-    "name": "Joseph Campau Alley (Caniff to Holbrook)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "alley",
-    "source_snapshot_date": null
+    "segment_id": "4",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "alley",
+    "type_label": "Alley"
    }
   },
   {
@@ -297,13 +289,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "5",
-    "name": "Jos Campau (McNichols to Carpenter)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "5",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -326,13 +316,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "6",
-    "name": "Conrail (Dequindre to McNichols)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "6",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -423,13 +411,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "7",
-    "name": "Conrail (Woodward to Dequindre)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "7",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -584,13 +570,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "8",
-    "name": "Conrail (Woodrow Wilson to Woodward)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "8",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -725,13 +709,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "9",
-    "name": "Conrail (Livernois to Rosa Parks)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "9",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -798,13 +780,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "10",
-    "name": "Conrail (Davison to Intervale)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "10",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -823,13 +803,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "11",
-    "name": "Davison (Cherrylawn Bridge to Conrail)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "11",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -876,13 +854,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "12",
-    "name": "Cherrylawn Bridge",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "bridge",
-    "source_snapshot_date": null
+    "segment_id": "12",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "bridge",
+    "type_label": "Bridge"
    }
   },
   {
@@ -909,13 +885,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "13",
-    "name": "Littlefield (Fullerton, Cherrylawn)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "13",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -978,13 +952,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "14",
-    "name": "Conrail (Oakman to Buena Vista)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "14",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -1011,13 +983,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "15",
-    "name": "Conrail (Grand River to Oakman)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "15",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -1040,13 +1010,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "16",
-    "name": "Grand River",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "16",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -1105,13 +1073,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "17",
-    "name": "Oakman Boulevard",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "17",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -1146,13 +1112,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "18",
-    "name": "Conrail (Joy to Chicago)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "18",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -1179,13 +1143,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "19",
-    "name": "Conrail (Warren to Joy)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "19",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -1388,13 +1350,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "20",
-    "name": "Patton Park",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "20",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -1421,13 +1381,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "21",
-    "name": "Springwells (Central)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "21",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -1458,13 +1416,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "22",
-    "name": "Springwells (Green, Lafayette)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "22",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -1603,13 +1559,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "23",
-    "name": "GHIB (Junction, Fort, Campbell, Jefferson, Green)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "23",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -1640,13 +1594,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "24",
-    "name": "FIsher Service Drive (Clark to Junction)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "24",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -1673,13 +1625,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "25",
-    "name": "West Grand Boulevard (Riverfront to Bagley)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "25",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -1698,13 +1648,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "26",
-    "name": "Bagley (24th to W. Grand)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "shared_street",
-    "source_snapshot_date": null
+    "segment_id": "26",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "shared_street",
+    "type_label": "Shared street"
    }
   },
   {
@@ -1727,13 +1675,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "27",
-    "name": "Bagley Streetscape (I-96 to 24th)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "shared_street",
-    "source_snapshot_date": null
+    "segment_id": "27",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "shared_street",
+    "type_label": "Shared street"
    }
   },
   {
@@ -1772,13 +1718,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "28",
-    "name": "I-96/75 Pedestrian Bridge",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "bridge",
-    "source_snapshot_date": null
+    "segment_id": "28",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "bridge",
+    "type_label": "Bridge"
    }
   },
   {
@@ -1809,13 +1753,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "29",
-    "name": "Bagley (21st to 16th)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "29",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -1834,13 +1776,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "30",
-    "name": "Bagley (16th to 15th)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "30",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -1947,13 +1887,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "31",
-    "name": "Southwest Greenway",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "31",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -2136,13 +2074,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "32",
-    "name": "Hamtramck Drive (Joseph Campau to St. Aubin)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "32",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -2161,13 +2097,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "33",
-    "name": "Jos Campau (Carpenter to Caniff)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "33",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2250,13 +2184,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "34",
-    "name": "Conrail (Intervale to Livernois)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "34",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -2283,13 +2215,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "35",
-    "name": "Chicago Connector (Chicago to Oakman)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "35",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -2308,13 +2238,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "36",
-    "name": "Springwells (Vernor Alley)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "alley",
-    "source_snapshot_date": null
+    "segment_id": "36",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "alley",
+    "type_label": "Alley"
    }
   },
   {
@@ -2349,13 +2277,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "37",
-    "name": "West Riverfront (Rosa Parks to Grand Boulevard)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "37",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -2462,13 +2388,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "38",
-    "name": "Romanowski Park",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "38",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -2487,13 +2411,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "39",
-    "name": "Lonyo (Radcliffe to West Warren)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "39",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -2520,13 +2442,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "40",
-    "name": "Lonyo (Arnold to Radcliffe)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "40",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2549,13 +2469,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "41",
-    "name": "Lonyo (Dix to St. John)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "41",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2574,13 +2492,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "42",
-    "name": "West Warren (Lonyo to Conrail)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "42",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2615,13 +2531,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "43",
-    "name": "Dubois Greenway (St. Aubin to Forest)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "43",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2692,13 +2606,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "44",
-    "name": "West Lafayette (West Grand to Scotten)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "44",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -2737,13 +2649,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "45",
-    "name": "Woodmere (Vernor to Fort)",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "45",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -2814,13 +2724,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "46",
-    "name": "M-10 Bridge (Rosa Parks to Woodrow Wilson)",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "46",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -3251,13 +3159,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "47",
-    "name": "Riverfront (Dequindre Cut to 8th)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "47",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -3276,13 +3182,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "48",
-    "name": "East Warren/East Forest (Dubois to Dequindre)",
-    "status_code": "unfunded",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "48",
+    "phase": "unfunded",
+    "phase_label": "Unfunded",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   },
   {
@@ -3321,13 +3225,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "49",
-    "name": "Clark Park",
-    "status_code": "funded",
-    "status_source": "ingested",
-    "type_code": "adjacent",
-    "source_snapshot_date": null
+    "segment_id": "49",
+    "phase": "funded",
+    "phase_label": "Funded",
+    "type": "adjacent",
+    "type_label": "Adjacent path"
    }
   },
   {
@@ -3346,13 +3248,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "50",
-    "name": "Woodward Bridge",
-    "status_code": "under_construction",
-    "status_source": "ingested",
-    "type_code": "off_street_trail",
-    "source_snapshot_date": null
+    "segment_id": "50",
+    "phase": "under_construction",
+    "phase_label": "Under construction",
+    "type": "off_street_trail",
+    "type_label": "Off-street trail"
    }
   },
   {
@@ -3411,13 +3311,11 @@
     ]
    },
    "properties": {
-    "source": "city_route_segments",
-    "source_ref": "51",
-    "name": "West Jefferson (8th to Rosa Parks)",
-    "status_code": "open",
-    "status_source": "ingested",
-    "type_code": "on_street_greenway",
-    "source_snapshot_date": null
+    "segment_id": "51",
+    "phase": "open",
+    "phase_label": "Open",
+    "type": "on_street_greenway",
+    "type_label": "On-street greenway"
    }
   }
  ]
