@@ -1,0 +1,28 @@
+# Redocly CLI configuration — lint gate for the API contract.
+# This file exists so "the spec is valid" is a repeatable CI check
+# (plan §5 Stage C, task C5) rather than a one-time local opinion.
+
+# One declaration, two tools. `redocly lint` and `openapi-typescript` both read
+# this block, so it is structurally impossible for the lint gate to check one
+# file while codegen reads another.
+apis:
+  segments:
+    root: openapi_B2.yaml
+    x-openapi-ts:
+      output: src/types/api.d.ts
+
+extends:
+  - recommended
+
+rules:
+  # Turned off deliberately, with a reason.
+  #
+  # This rule flags any server URL containing example.com OR localhost. The
+  # example.com half is a real defect and was fixed. The localhost half is not:
+  # a local development server entry is correct and useful, and Stage C's whole
+  # premise is that a teammate clones the repo and runs it locally.
+  #
+  # Leaving the rule on would leave the gate permanently yellow, which trains
+  # reviewers to ignore it. Reinstate this rule if a production server entry is
+  # ever added with a placeholder host.
+  no-server-example.com: off
