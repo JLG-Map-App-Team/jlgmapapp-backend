@@ -1,13 +1,13 @@
 Domain,Source value,Normalized code,Lookup table,Rule / description,Review required?
-route_phase,0,open,core.route_phase,Open,No
-route_phase,1,under_construction,core.route_phase,Under Construction,No
-route_phase,2,funded,core.route_phase,Funded,No
-route_phase,3,unfunded,core.route_phase,Unfunded,No
+route_phase,0,open,core.segment_status,Open,No
+route_phase,1,under_construction,core.segment_status,Under Construction,No
+route_phase,2,funded,core.segment_status,Funded,No
+route_phase,3,unfunded,core.segment_status,Unfunded,No
 route_typology,Adjacent,adjacent,core.segment_type,,No
 route_typology,Alley,alley,core.segment_type,,No
 route_typology,Bridge,bridge,core.segment_type,,No
-route_typology,Off-Street,off_street,core.segment_type,,No
-route_typology,On-Street,on_street,core.segment_type,,No
+route_typology,Off-Street,off_street_trail,core.segment_type,,No
+route_typology,On-Street,on_street_greenway,core.segment_type,,No
 route_typology,Shared street,shared_street,core.segment_type,,No
 poi_type,restroom,restroom,core.poi_type,,No
 poi_type,landmark,landmark,core.poi_type,,No

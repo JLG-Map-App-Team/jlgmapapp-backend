@@ -54,9 +54,8 @@ const SOURCE_CODE = 'city_route_segments';
 // core.status_source.code - M011. 'staff' is reserved for human confirmation.
 const STATUS_SOURCE = 'ingested';
 
-// Vocabulary maps. These MUST match scripts/etl/cityRouteSegments.js and the
-// codes seeded by M011. scripts/data-validation/code_translations.csv is stale
-// and disagrees with both - do not use it as a reference (tracked as B-O5).
+// Vocabulary maps. These MUST match scripts/etl/cityRouteSegments.js,
+// scripts/data-validation/code_translations.csv, and the codes seeded by M011.
 const PHASE_MAP = {
   'Open': 'open',
   'Under Construction': 'under_construction',
