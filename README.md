@@ -29,15 +29,27 @@ API and database services for the **Joe Louis Greenway Map App** — supports th
 
 ## Getting started
 **Prerequisites**
-- Node.js `[version — confirm]`
-- `[npm/pnpm — confirm]`
-- PostgreSQL with PostGIS, pgRouting, pg_trgm extensions
+- Node.js >= 22.0.0
+- npm
+- Docker Desktop (runs PostgreSQL + PostGIS + pgRouting via `docker-compose.yml`)
+- [dbmate](https://github.com/amacneil/dbmate) — `brew install dbmate` (runs the SQL migrations in `src/database/migrations`)
 
 **Clone**
 ```bash
 git clone [backend repo URL — confirm]
 cd [repo folder name — confirm]
 ```
+
+**Set up**
+```bash
+npm install
+cp .env.example .env
+npm run db:up          # starts Postgres/PostGIS/pgRouting in Docker
+npm run migrate        # applies all pending migrations
+npm run migrate:status # confirm what's applied
+```
+
+Other db/migration scripts: `npm run db:down` (stop the container), `npm run migrate:rollback` (undo the last migration), `npm run migrate:new -- some_name` (scaffold a new migration file).
 
 ## Team
 - Maha — Project Lead Software Engineer
