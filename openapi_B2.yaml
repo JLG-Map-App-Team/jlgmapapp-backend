@@ -94,22 +94,80 @@ components:
       description: >
         Non-geometric attributes of a route segment. Sourced from the City of
         Detroit Route Segments layer (ADR-001 §4.8).
-      required: [segment_id, phase, type]
+
+        Codes and labels are deliberately separate fields. The code is the
+        stable machine key — clients branch on it and use it to look up styling
+        (core.segment_status.color, core.segment_type.line_pattern). The label
+        is a display string owned by the vocabulary table and may be reworded or
+        translated at any time; clients must never branch on it.
+      required: [segment_id, phase, phase_label, type, type_label]
       properties:
+
         segment_id:
           type: string
           description: >
-            Stable identifier for the segment.
-            OPEN QUESTION — not yet decided: this is either the stringified
-            core.route_segment.id (a bigint identity column) or the source
-            layer's OBJECTID. Those have different stability guarantees.
-            Resolve before Stage D1 implements the query.
+            core.route_segment.id, stringified. Decided 2026-08-19.
+
+            The bigint identity column is used rather than the source layer's
+            OBJECTID because ArcGIS OBJECTIDs are internal row identifiers that
+            may change when a layer is republished. Stability across ETL reloads
+            depends on the loader UPSERTing on the existing
+            route_segment_source_ref_unique (source, source_ref) constraint from
+            migration M07, NOT on truncate-and-reinsert. If the loader
+            truncates, these identifiers change on every run and any client that
+            stored one is broken.
+
         phase:
           type: string
-          description: Segment status (FR-05) — ADR-001 §4.8
+          nullable: true
+          enum: [open, under_construction, funded, unfunded, null]
+          description: >
+            Segment status (FR-05) — ADR-001 §4.8. Values are
+            core.segment_status.code, seeded by migration M011.
+
+            Nullable because core.route_segment.status_code is a nullable
+            reference and scripts/etl/cityRouteSegments.js explicitly writes
+            null when PHASE_DESCRIPTION is absent from the source row. A client
+            must handle a segment with no known status.
+
+        phase_label:
+          type: string
+          nullable: true
+          description: >
+            Human-readable form of `phase`, from core.segment_status.label.
+            Display only. Deliberately has no enum: labels are editable, and
+            constraining them here would make a wording change a breaking API
+            change. Null exactly when `phase` is null.
+          example: "Under construction"
+
         type:
           type: string
-          description: Segment type (FR-06) — ADR-001 §4.8
+          nullable: true
+          enum:
+            [
+              off_street_trail,
+              bridge,
+              adjacent,
+              on_street_greenway,
+              alley,
+              shared_street,
+              null,
+            ]
+          description: >
+            Segment type (FR-06) — ADR-001 §4.8. Values are
+            core.segment_type.code, seeded by migration M011.
+
+            Nullable for the same reason as `phase`: core.route_segment.type_code
+            is a nullable reference.
+
+        type_label:
+          type: string
+          nullable: true
+          description: >
+            Human-readable form of `type`, from core.segment_type.label.
+            Display only, no enum — see `phase_label`. Null exactly when
+            `type` is null.
+          example: "Off-street trail"
 
     SegmentFeature:
       type: object

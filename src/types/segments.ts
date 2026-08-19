@@ -17,5 +17,15 @@ export type SegmentProperties = components['schemas']['SegmentProperties'];
 export type LineStringGeometry = components['schemas']['LineStringGeometry'];
 export type Position = components['schemas']['Position'];
 
+/**
+ * The closed set of segment status codes — core.segment_status.code (M011).
+ * NonNullable because a styling or labelling function should be forced to
+ * handle the null case explicitly at the call site rather than absorb it.
+ */
+export type SegmentPhase = NonNullable<SegmentProperties['phase']>;
+
+/** The closed set of segment type codes — core.segment_type.code (M011). */
+export type SegmentTypeCode = NonNullable<SegmentProperties['type']>;
+
 /** RFC 9457 Problem Details — the shape of every error this API returns. */
 export type Problem = components['schemas']['Problem'];
