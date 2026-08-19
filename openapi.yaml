@@ -29,6 +29,7 @@ paths:
       # surfaces only (ADR-001 §4.3, §4.11). No admin endpoint exists in this
       # spec yet. An empty array means "no security requirements" and overrides
       # any root-level `security` added later — OpenAPI 3.0.3, Operation Object.
+      #explicitly mentions no login is needed
       security: []
       summary: Route segments
       responses:
