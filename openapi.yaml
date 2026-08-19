@@ -3,8 +3,20 @@ info:
   title: JLG Map App API
   version: "1.0"
 servers:
-  - url: https://api.example.com
-    description: Production (placeholder — confirm real host before Stage E)
+  # Local development only. There is deliberately no production entry yet.
+  #
+  # The production hostname has not been decided (plan §5 Stage E, task E1).
+  # A placeholder production URL is worse than no entry: client generators and
+  # "try it" tooling would emit code pointing at a domain the project does not
+  # own. Plan §5 task D5 already requires the API base URL to come from an
+  # environment variable and never be hardcoded, so no consumer depends on
+  # this list resolving a production host.
+  #
+  # Add the production entry at Stage E, once E1 has a real hostname and TLS.
+  #
+  # Versioning lives in the path (/api/v1/...), not in the server URL — per
+  # plan §5 task B1, "version the path from the first commit". Do not add
+  # /v1 to a server URL: combined with the path it yields /v1/api/v1/segments.
   - url: http://localhost:3000
     description: Local development
 paths:
