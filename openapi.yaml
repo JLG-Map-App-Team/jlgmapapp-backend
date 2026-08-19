@@ -2,6 +2,11 @@ openapi: 3.0.3
 info:
   title: JLG Map App API
   version: "1.0"
+servers:
+  - url: https://api.example.com/v1
+    description: Production (placeholder — confirm real host before Stage E)
+  - url: http://localhost:3000
+    description: Local development
 paths:
   /api/v1/segments:
     get:
