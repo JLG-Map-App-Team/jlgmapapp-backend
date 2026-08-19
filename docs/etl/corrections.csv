@@ -1,0 +1,24 @@
+Production table,Mapping field (wrong),Action,Correct field,Why
+core.access_point,city,ADD,city,Needs a column. Four municipalities; nothing else carries it
+core.access_point,coordinate_method,ADD,coordinate_method,Provenance. Data Loading Plan §8.1
+core.access_point,coordinate_confidence_code,ADD,coordinate_confidence,"Provenance. Vocabulary table, DLP §8.3"
+core.access_point,distance_to_route_m,ADD,distance_to_trail_m,"Mirror the name POI already uses, for consistency"
+core.access_point,nearest_route_segment_id,ADD,nearest_route_segment_id,FK to core.route_segment. Derived in load step 8
+core.access_point,source_group,DROP,—,"Group A/B/C is a working artefact of the geocoding pass, not a domain fact"
+core.access_point,source_route_segment_id,DROP,—,"Source-file annotation, not a relationship the schema models"
+core.access_point,review_required,DROP,—,"A judgement, not data. Derive from confidence + distance at query time"
+core.access_point,source_record_id,RENAME,source_ref,
+core.access_point,tier_code,RENAME,subtype_code,FK to core.access_point_subtype: major_access / minor_access
+core.access_point,built_status_code,RENAME,is_built,"Boolean, not a code. Source value is proposed_or_existing_TBD, so NULL"
+core.point_of_interest,nearest_route_segment_id,ADD,nearest_route_segment_id,Derived in load step 8
+core.point_of_interest,coordinate_method,ADD,coordinate_method,Provenance
+core.point_of_interest,source_note,DROP,—,Free text with no consumer. Keep in staging
+core.point_of_interest,record_note,DROP,—,Same
+core.point_of_interest,source_record_id,RENAME,source_ref,
+core.point_of_interest,poi_type_id,RENAME,poi_type_code,Text code FK to core.poi_type
+core.point_of_interest,distance_to_route_m,RENAME,distance_to_trail_m,"ALREADY EXISTS, with _method and _measured_on alongside"
+core.point_of_interest,source_map_number,RENAME,source_ref,Framework map # IS the source_ref for these records
+core.route_segment,length_m,DROP,—,Derived from geom. ST_Length(geom_proj) on demand; never stored
+core.route_segment,source_record_id,RENAME,source_ref,"Schema uses source + source_ref, unique together"
+core.route_segment,segment_type_id,RENAME,type_code,"Text code FK to core.segment_type, not an integer id"
+core.route_segment,phase_code,RENAME,status_code,Nullable by design: FR-05 shall-8 renders unclassified neutrally

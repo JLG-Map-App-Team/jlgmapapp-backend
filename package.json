@@ -1,0 +1,7 @@
+{
+  "name": "jlgmapapp-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend services and ETL tooling for the Joe Louis Greenway map application.",
+  "type": "module"
+}
