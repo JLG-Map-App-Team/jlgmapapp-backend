@@ -66,11 +66,6 @@ vocabulary in M011 is incomplete.
 Source values are translated to the vocabulary **codes** seeded by M011. The maps
 in the generator match `scripts/etl/cityRouteSegments.js`.
 
-> `scripts/data-validation/code_translations.csv` is **stale and wrong** — it maps
-> to `off_street` / `on_street`, which exist in no vocabulary, and names a table
-> `core.route_phase` that no migration creates. Do not use it as a reference.
-> Tracked as roadmap item B-O5.
-
 ### `segments.seed.geojson` — database columns
 
 | Source field | Seed property | Notes |
