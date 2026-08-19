@@ -1,0 +1,50 @@
+# Stage B gate: the API contract and its generated types must stay in sync.
+#
+# Plan §5 Stage C task C5 calls for install -> typecheck -> lint -> test ->
+# build -> deploy. This workflow is the contract slice of that pipeline; it is
+# deliberately narrow so it can land before the Docker/database work in Stage C.
+# Test and build stages get added to this file (or a sibling) at C4/C5.
+
+name: API contract
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Cancel superseded runs on the same branch — a PR that gets three pushes in a
+# minute should not burn three full runs.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # `npm ci` installs exactly what package-lock.json pins and fails if the
+      # lockfile is out of step with package.json. `npm install` would silently
+      # resolve new versions, which is how codegen output drifts between
+      # machines for no visible reason.
+      - name: Install
+        run: npm ci
+
+      - name: Lint the OpenAPI spec
+        run: npm run lint:api
+
+      # Fails if openapi_B2.yaml was edited without regenerating the types.
+      - name: Check generated types are in sync with the spec
+        run: npm run gen:api:check
+
+      - name: Typecheck
+        run: npm run typecheck

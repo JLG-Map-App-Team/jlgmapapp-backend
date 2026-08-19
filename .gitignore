@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+
+# NOTE: src/types/api.d.ts is generated but IS committed on purpose.
+# A teammate must be able to clone and typecheck without running codegen
+# first, and reviewers must be able to see contract changes in the diff.
+# CI enforces freshness via `npm run gen:api:check`.
