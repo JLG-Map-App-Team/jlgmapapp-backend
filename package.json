@@ -28,7 +28,7 @@
     "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs",
     "lint": "npm run lint:api",
     "seed": "node scripts/seed.mjs",
-    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs",
+    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs",
     "db:migrate": "node scripts/apply-migrations.mjs"
   },
