@@ -237,7 +237,7 @@ Lanes 2 and 3 are **explorative/experimental** prototypes — timeboxed, with a 
 
 NFR targets still unratified (ADR-001 §10 item 3): NFR-AVL-01 uptime, NFR-PRF-01 device and network profile, NFR-PRF-05 data and concurrency multipliers. Stage D's response-size budget needs a number from NFR-PRF-01; until ratified, the test asserts against a provisional figure that must be flagged in the code.
 
-4. **Buffer coordinate system unpinned** (ADR-001 §10 item 6): EPSG:2253 or EPSG:26917. Closed by Lane 3.
+4. ~~**Buffer coordinate system unpinned** (ADR-001 §10 item 6): EPSG:2253 or EPSG:26917.~~ **Closed 2026-08-21 (Lane 3, L3.1): EPSG:26917 pinned. See ADR-001 §4.9.**
 5. **Google API references in ADR-001 §4.11 and §10 item 4 need reconciling.** The team has clarified that "validating Google feasibility" meant open-data source discovery, not the Google Maps Platform API. ADR-001 currently records the Google API as the chosen source for restroom hours (FR-11-OQ1). Either the ADR should be amended, or the Google Maps Platform Service Specific Terms restriction on using Places content with a non-Google map applies to our MapLibre stack and the decision needs revisiting.
 6. **Frontend repository README describes an application that does not exist.** It claims React, Vite, TypeScript, MapLibre and Turf.js; the repository contains a 24-line static HTML placeholder and no `package.json`. It also gives a clone URL of `jlgmapapp.git` where the repository is `jlgmapapp-frontend`, and states the greenway is 30 miles where project records state 27.5 — to be reconciled against the Framework Plan rather than picked.
 
@@ -262,3 +262,4 @@ NFR targets still unratified (ADR-001 §10 item 3): NFR-AVL-01 uptime, NFR-PRF-0
 | Date | Change |
 | :---- | :---- |
 | 2026-08-17 | Created. Stage A decisions locked: Cloudflare Pages retained per ADR-001 §3 with Firebase Hosting to be removed (§4.1); backend, database and architecture ownership assigned to Maha, Eity, Asmita and Rachael (§4.2). Mock server dropped from Stage B as having no consumer while frontend work is paused pending design approval; OpenAPI spec and generated types retained. Harness relocated to the backend repository so the frontend repository stays clean for the approved design. |
+| 2026-08-21 | §9 item 4 closed: buffer coordinate system pinned to EPSG:26917 (Lane 3, L3.1). See ADR-001 §4.9 and §10 item 6 for the recorded decision. |
