@@ -265,9 +265,16 @@ BEGIN
   -- nodes, and the baseline of 0.8450 was measured by length. On the published
   -- dataset the three give 0.8679, 0.8519 and 0.8452 respectively. Length is
   -- now authoritative in both places.
+  -- The ::numeric cast is load-bearing. ST_Length returns double precision, so
+  -- the quotient is double precision, and round(double precision, integer) does
+  -- not exist in PostgreSQL — only round(numeric, integer) and single-argument
+  -- round(double precision). Without the cast this function raises
+  -- "function round(double precision, integer) does not exist" at run time,
+  -- after the importer has already committed core data, leaving the topology
+  -- unrebuilt. Every other round() in this file already casts; this one did not.
   SELECT round(
-           sum(CASE WHEN c.component = lc.component THEN ST_Length(e.geom) ELSE 0 END)
-           / NULLIF(sum(ST_Length(e.geom)), 0), 4)
+           (sum(CASE WHEN c.component = lc.component THEN ST_Length(e.geom) ELSE 0 END)
+           / NULLIF(sum(ST_Length(e.geom)), 0))::numeric, 4)
     INTO v_largest_share
   FROM _edge e
   JOIN _component c ON c.node = e.source
@@ -560,3 +567,6 @@ COMMENT ON FUNCTION routing.rebuild_topology(bigint) IS
 DROP FUNCTION IF EXISTS routing.rebuild_topology(bigint);
 DROP FUNCTION IF EXISTS routing.describe_position(geometry);
 ALTER TABLE routing.topology_check DROP CONSTRAINT IF EXISTS topology_check_etl_run_fkey;
+
+
+

@@ -181,7 +181,7 @@
     ]
    },
    "properties": {
-    "segment_id": "1",
+    "segment_id": "2",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -212,7 +212,7 @@
     ]
    },
    "properties": {
-    "segment_id": "2",
+    "segment_id": "3",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "adjacent",
@@ -235,7 +235,7 @@
     ]
    },
    "properties": {
-    "segment_id": "3",
+    "segment_id": "5",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",
@@ -266,7 +266,7 @@
     ]
    },
    "properties": {
-    "segment_id": "4",
+    "segment_id": "6",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "alley",
@@ -289,7 +289,7 @@
     ]
    },
    "properties": {
-    "segment_id": "5",
+    "segment_id": "7",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",
@@ -316,7 +316,7 @@
     ]
    },
    "properties": {
-    "segment_id": "6",
+    "segment_id": "8",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -411,7 +411,7 @@
     ]
    },
    "properties": {
-    "segment_id": "7",
+    "segment_id": "10",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "off_street_trail",
@@ -570,7 +570,7 @@
     ]
    },
    "properties": {
-    "segment_id": "8",
+    "segment_id": "13",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -709,7 +709,7 @@
     ]
    },
    "properties": {
-    "segment_id": "9",
+    "segment_id": "18",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -780,7 +780,7 @@
     ]
    },
    "properties": {
-    "segment_id": "10",
+    "segment_id": "23",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -803,7 +803,7 @@
     ]
    },
    "properties": {
-    "segment_id": "11",
+    "segment_id": "24",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "on_street_greenway",
@@ -854,7 +854,7 @@
     ]
    },
    "properties": {
-    "segment_id": "12",
+    "segment_id": "25",
     "phase": "open",
     "phase_label": "Open",
     "type": "bridge",
@@ -885,7 +885,7 @@
     ]
    },
    "properties": {
-    "segment_id": "13",
+    "segment_id": "26",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "on_street_greenway",
@@ -952,7 +952,7 @@
     ]
    },
    "properties": {
-    "segment_id": "14",
+    "segment_id": "28",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -983,7 +983,7 @@
     ]
    },
    "properties": {
-    "segment_id": "15",
+    "segment_id": "30",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -1010,7 +1010,7 @@
     ]
    },
    "properties": {
-    "segment_id": "16",
+    "segment_id": "31",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",
@@ -1073,7 +1073,7 @@
     ]
    },
    "properties": {
-    "segment_id": "17",
+    "segment_id": "32",
     "phase": "open",
     "phase_label": "Open",
     "type": "adjacent",
@@ -1112,7 +1112,7 @@
     ]
    },
    "properties": {
-    "segment_id": "18",
+    "segment_id": "34",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -1143,7 +1143,7 @@
     ]
    },
    "properties": {
-    "segment_id": "19",
+    "segment_id": "35",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -1350,7 +1350,7 @@
     ]
    },
    "properties": {
-    "segment_id": "20",
+    "segment_id": "48",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "off_street_trail",
@@ -1381,7 +1381,7 @@
     ]
    },
    "properties": {
-    "segment_id": "21",
+    "segment_id": "52",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -1416,7 +1416,7 @@
     ]
    },
    "properties": {
-    "segment_id": "22",
+    "segment_id": "53",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "adjacent",
@@ -1559,7 +1559,7 @@
     ]
    },
    "properties": {
-    "segment_id": "23",
+    "segment_id": "55",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "adjacent",
@@ -1594,7 +1594,7 @@
     ]
    },
    "properties": {
-    "segment_id": "24",
+    "segment_id": "56",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "adjacent",
@@ -1625,7 +1625,7 @@
     ]
    },
    "properties": {
-    "segment_id": "25",
+    "segment_id": "57",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",
@@ -1648,7 +1648,7 @@
     ]
    },
    "properties": {
-    "segment_id": "26",
+    "segment_id": "58",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "shared_street",
@@ -1675,7 +1675,7 @@
     ]
    },
    "properties": {
-    "segment_id": "27",
+    "segment_id": "59",
     "phase": "open",
     "phase_label": "Open",
     "type": "shared_street",
@@ -1718,7 +1718,7 @@
     ]
    },
    "properties": {
-    "segment_id": "28",
+    "segment_id": "60",
     "phase": "open",
     "phase_label": "Open",
     "type": "bridge",
@@ -1753,7 +1753,7 @@
     ]
    },
    "properties": {
-    "segment_id": "29",
+    "segment_id": "61",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -1776,7 +1776,7 @@
     ]
    },
    "properties": {
-    "segment_id": "30",
+    "segment_id": "62",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",
@@ -1887,7 +1887,7 @@
     ]
    },
    "properties": {
-    "segment_id": "31",
+    "segment_id": "63",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -2074,7 +2074,7 @@
     ]
    },
    "properties": {
-    "segment_id": "32",
+    "segment_id": "65",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "adjacent",
@@ -2097,7 +2097,7 @@
     ]
    },
    "properties": {
-    "segment_id": "33",
+    "segment_id": "66",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -2184,7 +2184,7 @@
     ]
    },
    "properties": {
-    "segment_id": "34",
+    "segment_id": "71",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -2215,7 +2215,7 @@
     ]
    },
    "properties": {
-    "segment_id": "35",
+    "segment_id": "73",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -2238,7 +2238,7 @@
     ]
    },
    "properties": {
-    "segment_id": "36",
+    "segment_id": "76",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "alley",
@@ -2277,7 +2277,7 @@
     ]
    },
    "properties": {
-    "segment_id": "37",
+    "segment_id": "77",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "off_street_trail",
@@ -2388,7 +2388,7 @@
     ]
    },
    "properties": {
-    "segment_id": "38",
+    "segment_id": "82",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -2411,7 +2411,7 @@
     ]
    },
    "properties": {
-    "segment_id": "39",
+    "segment_id": "84",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "adjacent",
@@ -2442,7 +2442,7 @@
     ]
    },
    "properties": {
-    "segment_id": "40",
+    "segment_id": "85",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -2469,7 +2469,7 @@
     ]
    },
    "properties": {
-    "segment_id": "41",
+    "segment_id": "86",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -2492,7 +2492,7 @@
     ]
    },
    "properties": {
-    "segment_id": "42",
+    "segment_id": "211",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -2531,7 +2531,7 @@
     ]
    },
    "properties": {
-    "segment_id": "43",
+    "segment_id": "212",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -2606,7 +2606,7 @@
     ]
    },
    "properties": {
-    "segment_id": "44",
+    "segment_id": "213",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "on_street_greenway",
@@ -2649,7 +2649,7 @@
     ]
    },
    "properties": {
-    "segment_id": "45",
+    "segment_id": "214",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "adjacent",
@@ -2724,7 +2724,7 @@
     ]
    },
    "properties": {
-    "segment_id": "46",
+    "segment_id": "224",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -3159,7 +3159,7 @@
     ]
    },
    "properties": {
-    "segment_id": "47",
+    "segment_id": "226",
     "phase": "open",
     "phase_label": "Open",
     "type": "off_street_trail",
@@ -3182,7 +3182,7 @@
     ]
    },
    "properties": {
-    "segment_id": "48",
+    "segment_id": "227",
     "phase": "unfunded",
     "phase_label": "Unfunded",
     "type": "on_street_greenway",
@@ -3225,7 +3225,7 @@
     ]
    },
    "properties": {
-    "segment_id": "49",
+    "segment_id": "229",
     "phase": "funded",
     "phase_label": "Funded",
     "type": "adjacent",
@@ -3248,7 +3248,7 @@
     ]
    },
    "properties": {
-    "segment_id": "50",
+    "segment_id": "230",
     "phase": "under_construction",
     "phase_label": "Under construction",
     "type": "off_street_trail",
@@ -3311,7 +3311,7 @@
     ]
    },
    "properties": {
-    "segment_id": "51",
+    "segment_id": "233",
     "phase": "open",
     "phase_label": "Open",
     "type": "on_street_greenway",

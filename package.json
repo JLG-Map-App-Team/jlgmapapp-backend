@@ -9,36 +9,37 @@
   },
   "scripts": {
     "lint:api": "redocly lint",
-    "lint": "npm run lint:api",
     "gen:api": "openapi-typescript",
-    "seed:build": "node scripts/seed/build-segments-seed.mjs",
+    "fixture:build": "node scripts/seed/build-segments-fixture.mjs",
+    "contract:demo": "node --env-file-if-exists=.env scripts/contract/demo-response-validation.mjs",
     "gen:api:check": "node scripts/check-api-types-fresh.mjs",
     "typecheck": "tsc --noEmit",
-    "seed": "node scripts/seed.mjs",
-    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs",
-    "test:a11y": "node --test scripts/accessibility.test.mjs",
-    "build": "tsc",
-    "db:migrate": "node scripts/apply-migrations.mjs",
-    "verify:migrations": "node scripts/verify-migrations.mjs",
     "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "migrate": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
     "migrate:rollback": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations rollback",
     "migrate:status": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations status",
-    "migrate:new": "dbmate --migrations-dir ./src/database/migrations new"
+    "migrate:new": "dbmate --migrations-dir ./src/database/migrations new",
+    "db:reset": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations drop && dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
+    "etl:segments": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments",
+    "etl:segments:dry": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments --dry-run",
+    "build": "tsc",
+    "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs"
   },
   "devDependencies": {
     "@redocly/cli": "2.46.2",
     "@types/express": "^5.0.6",
     "@types/pg": "^8.23.1",
-    "axe-core": "^4.13.0",
-    "jsdom": "^29.1.1",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "dbmate": "2.35.0",
+    "js-yaml": "^4.1.0",
     "openapi-typescript": "7.13.0",
     "typescript": "5.9.3"
   },
   "dependencies": {
     "express": "^5.2.1",
-    "pg": "^8.23.0"
+    "pg": "8.16.3"
   }
 }
