@@ -24,14 +24,15 @@
  *
  * ASSUMPTIONS TO CHECK AGAINST THE REPO
  *
- *   ESM, node-postgres, and a pool exported from ../../src/db/pool.js. If the
+ *   ESM, node-postgres, and a pool exported from ../../dist/db/pool.js (the
+ *   compiled output of src/db/pool.ts — run `npm run build` first). If the
  *   backend is CommonJS or uses a different client, the three imports below are
  *   the only lines that change. Nothing else here depends on either choice.
  */
 
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import pool from '../../src/db/pool.js';
+import pool from '../../dist/db/pool.js';
 
 const SOURCE_CODE = 'city_route_segments';
 const EXPECTED_FEATURE_COUNT = 51;

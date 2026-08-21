@@ -18,18 +18,19 @@
  *
  * CONNECTION CONFIGURATION
  *
- *   Via src/db/pool.js, deliberately. The previous version assembled its own
- *   config from PGHOST/PGPORT/PGDATABASE with localhost and port 5432 defaults —
- *   a second source of connection truth, and the precise failure pool.js's
- *   header warns about: "a fallback connection string is how a script gets
- *   pointed at the wrong database." pool.js requires DATABASE_URL and refuses a
- *   default, so an unset variable fails loudly here instead of silently testing
- *   whatever happens to be listening on 5432.
+ *   Via dist/db/pool.js (the compiled output of src/db/pool.ts — run
+ *   `npm run build` first), deliberately. The previous version assembled its
+ *   own config from PGHOST/PGPORT/PGDATABASE with localhost and port 5432
+ *   defaults — a second source of connection truth, and the precise failure
+ *   pool.ts's header warns about: "a fallback connection string is how a
+ *   script gets pointed at the wrong database." pool.ts requires DATABASE_URL
+ *   and refuses a default, so an unset variable fails loudly here instead of
+ *   silently testing whatever happens to be listening on 5432.
  */
 
 import assert from 'node:assert/strict'
 import test, { after } from 'node:test'
-import pool, { closePool } from '../src/db/pool.js'
+import pool, { closePool } from '../dist/db/pool.js'
 
 // M016 records this dataset as 51 segments; scripts/etl/cityRouteSegments.js
 // treats any other count as fatal. Asserted, not assumed.
