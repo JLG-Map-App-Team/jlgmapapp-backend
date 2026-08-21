@@ -21,6 +21,12 @@ matter to routing?
   and all tolerances in `routing.topology_check`.
 - The 2026-08-01 analysis found two components: approximately 41.7 km and
   7.6 km; four dead ends; junctions; and four mid-line meeting points.
+- The reproducible run on 2026-08-21 against the pinned container and current
+  full seed published **55 edges, 54 nodes, 1 connected component, 2 dead ends,
+  0 isolated components, 4 splits, and a 1.0000 largest-component share**.
+  Four `segment_split` review flags were emitted. The older two-component,
+  four-dead-end figures are retained above as the pre-noding baseline; they are
+  not the result of the current noded graph.
 - The four mid-line contacts were verified on 2026-08-03 as physical
   connections: Littlefield/Conrail, West Grand Boulevard/West Lafayette,
   Southwest Greenway/West Jefferson, and Springwells/Woodmere.
@@ -39,8 +45,10 @@ are the recorded baseline from the analysis that motivated this spike.
 
 Yes. pgRouting is suitable for Phase 1, but only after a topology-build step
 that explicitly handles interior contacts and endpoint tolerance. The network
-must be treated as a multi-component graph, not as one arithmetic loop. The
-published data is not a single closed ring.
+must be treated as a graph, not as one arithmetic loop. The raw analysis showed
+disconnected pieces; the current noding and tolerance rules publish one
+connected component for the committed full seed, with the four interior
+contacts surfaced for review rather than hidden.
 
 ## Decision
 

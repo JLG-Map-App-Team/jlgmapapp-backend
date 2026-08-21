@@ -33,6 +33,15 @@ try {
      ORDER BY checked_at DESC
      LIMIT 1`, [run.id])
 
+  await client.query(
+    `UPDATE staging.etl_run
+        SET status = CASE WHEN $2 = 'published' THEN 'succeeded' ELSE 'failed' END,
+            finished_at = now(),
+            rows_inserted = $1
+      WHERE id = $3`,
+    [metrics.source_segment_count, metrics.outcome, run.id],
+  )
+
   console.log(JSON.stringify({ runId: run.id, metrics, flags }, null, 2))
 } finally {
   await client.end()

@@ -265,9 +265,10 @@ BEGIN
   -- nodes, and the baseline of 0.8450 was measured by length. On the published
   -- dataset the three give 0.8679, 0.8519 and 0.8452 respectively. Length is
   -- now authoritative in both places.
-  SELECT round(
+  SELECT round((
            sum(CASE WHEN c.component = lc.component THEN ST_Length(e.geom) ELSE 0 END)
-           / NULLIF(sum(ST_Length(e.geom)), 0), 4)
+           / NULLIF(sum(ST_Length(e.geom)), 0)
+         )::numeric, 4)
     INTO v_largest_share
   FROM _edge e
   JOIN _component c ON c.node = e.source
