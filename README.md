@@ -50,6 +50,23 @@ npm run migrate:status # confirm what's applied
 ```
 
 Other db/migration scripts: `npm run db:down` (stop the container), `npm run migrate:rollback` (undo the last migration), `npm run migrate:new -- some_name` (scaffold a new migration file).
+## Local database
+
+Start the pinned PostgreSQL, PostGIS, and pgRouting container:
+
+```bash
+docker compose up -d
+docker compose ps
+```
+
+To verify that every migration applies to an empty database and rolls back cleanly:
+
+```bash
+npm run verify:migrations
+```
+
+The migration verification uses a disposable Compose project and host port `55432`,
+so it can run while the normal database is using port `5432`.
 
 ## Team
 - Maha — Project Lead Software Engineer

@@ -1,9 +1,6 @@
-# Stage B gate: the API contract and its generated types must stay in sync.
-#
-# Plan §5 Stage C task C5 calls for install -> typecheck -> lint -> test ->
-# build -> deploy. This workflow is the contract slice of that pipeline; it is
-# deliberately narrow so it can land before the Docker/database work in Stage C.
-# Test and build stages get added to this file (or a sibling) at C4/C5.
+# Stage C gate: install -> typecheck -> lint -> test -> build -> deploy.
+# The deploy step publishes a versioned CI artifact; production deployment is
+# deliberately deferred to Stage E, when the origin and hosting targets exist.
 
 name: API contract
 
@@ -39,12 +36,41 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Lint the OpenAPI spec
-        run: npm run lint:api
+        run: npm run lint
 
       # Fails if openapi_B2.yaml was edited without regenerating the types.
       - name: Check generated types are in sync with the spec
         run: npm run gen:api:check
 
-      - name: Typecheck
-        run: npm run typecheck
+      - name: Start PostGIS and pgRouting
+        run: POSTGRES_PORT=55432 docker compose -p jlgmapapp-c2 up -d --wait
+
+      - name: Apply migrations
+        run: POSTGRES_PORT=55432 npm run db:migrate
+
+      - name: Seed the fixed route extract
+        run: POSTGRES_PORT=55432 npm run seed
+
+      - name: Run the real database test
+        run: POSTGRES_PORT=55432 npm test
+
+      - name: Run the accessibility gate
+        run: npm run test:a11y
+
+      - name: Build
+        run: npm run build
+
+      - name: Package deployment artifact
+        run: tar -czf jlgmapapp-backend-${{ github.sha }}.tgz dist package.json package-lock.json
+
+      - name: Deploy CI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jlgmapapp-backend-${{ github.sha }}
+          path: jlgmapapp-backend-${{ github.sha }}.tgz
+          if-no-files-found: error
+          retention-days: 14

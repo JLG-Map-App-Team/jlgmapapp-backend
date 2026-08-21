@@ -129,3 +129,18 @@ A "fixed seed extract" that cannot be rebuilt is not fixed — it is a snapshot 
 a lost state. The generator replaces trust with reproducibility: run it, and
 `git diff --exit-code -- seed/` proves the committed files are what the source
 produces.
+**Selection.** 20 of 52 features, chosen to cover every `phase` × `type`
+combination present in the source (15 combinations), plus 5 extra drawn
+from the largest groups. Not a random or first-N sample — it's picked so
+the seed alone exercises every status/type value the endpoint can return.
+
+## Load locally
+
+With the pinned database running and migrations applied:
+
+```bash
+npm run seed
+```
+
+The command is safe to repeat. It upserts the fixed rows using `seed:<segment_id>`
+source references and lets the database trigger derive the EPSG:26917 geometry.
