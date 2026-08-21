@@ -11,7 +11,7 @@
     "lint:api": "redocly lint",
     "lint": "npm run lint:api",
     "gen:api": "openapi-typescript",
-    "seed:build": "node scripts/seed/build-segments-seed.mjs",
+    "fixture:build": "node scripts/seed/build-segments-fixture.mjs",
     "gen:api:check": "node scripts/check-api-types-fresh.mjs",
     "typecheck": "tsc --noEmit",
   "seed": "node scripts/seed.mjs",
@@ -26,12 +26,16 @@
     "migrate": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
     "migrate:rollback": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations rollback",
     "migrate:status": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations status",
-    "migrate:new": "dbmate --migrations-dir ./src/database/migrations new"
+    "migrate:new": "dbmate --migrations-dir ./src/database/migrations new",
+    "db:reset": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations drop && dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
+    "etl:segments": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments",
+    "etl:segments:dry": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments --dry-run"
   },
   "devDependencies": {
     "@redocly/cli": "2.46.2",
     "axe-core": "^4.13.0",
     "jsdom": "^29.1.1",
+    "dbmate": "2.35.0",
     "openapi-typescript": "7.13.0",
     "typescript": "5.9.3"
   },

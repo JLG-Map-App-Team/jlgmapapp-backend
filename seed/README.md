@@ -1,74 +1,108 @@
-# Seed data
+# Fixtures
 
-Two files, both generated. **Do not hand-edit either one.** Run:
+One file, generated. **Do not hand-edit it.** Run:
 
 ```bash
-npm run seed:build
+npm run fixture:build
 ```
 
 | File | Role |
 | :--- | :--- |
-| `segments.seed.geojson` | Database seed input. Loaded by the seed step for Stage C3. |
-| `segments.response.fixture.geojson` | Expected `GET /api/v1/segments` response once that seed is loaded. |
+| `segments.response.fixture.geojson` | Expected `GET /api/v1/segments` response for the committed export. |
 
-Generator: `scripts/seed/build-segments-seed.mjs`.
+Generator: `scripts/seed/build-segments-fixture.mjs`.
+
+## There is no separate database seed file
+
+`segments.seed.geojson` has been **deleted**. Two reasons.
+
+**Nothing consumed it.** `scripts/etl/cityRouteSegments.js` loads the committed
+export straight through `staging.route_segment_raw` into `core.route_segment` and
+then rebuilds the routing topology. **The ETL importer *is* Stage C3's seed
+step.** A second load path added no capability.
+
+**It was keyed wrongly, and the failure was silent.** It set `source_ref` from
+`OBJECTID`. `scripts/data-validation/field_mapping.csv` row **MAP-013**
+specifies `OBJECT_ID` → `core.route_segment.source_ref`, described as *"Stable
+source key"*, and the importer implements that.
+
+These are different fields:
+
+| Field | Shape | What it is |
+| :--- | :--- | :--- |
+| `OBJECTID` | dense `1`–`51` | ArcGIS internal row id. Can change when the layer is republished. |
+| `OBJECT_ID` | sparse, `2`…`233` | City planning identifier. The stable key. |
+
+**Twenty values exist in both key spaces, and all twenty refer to different
+segments.** An upsert on `(source, source_ref)` fed from the wrong key would have
+overwritten twenty rows with another segment's geometry and name, and inserted
+the remaining thirty-one as duplicates — with no error, no warning, and no change
+in row count. Verified against a live PostGIS database.
+
+To load the database:
+
+```bash
+npm run db:up          # docker compose, PostGIS 3.4 + pgRouting 3.6.1 pinned
+npm run migrate        # dbmate, all 16 migrations
+npm run etl:segments   # loads all 51 segments, rebuilds topology
+```
 
 ## Source
 
-`docs/etl/Joe_Louis_Greenway_Routes_6582477513894808108.geojson` — the committed
-export. **51 `LineString` features, `OBJECTID` 1–51 with no gaps**, two-dimensional
-coordinates, 638 vertices.
+`docs/etl/Joe_Louis_Greenway_Routes_6582477513894808108.geojson` — **51
+`LineString` features**, two-dimensional coordinates, 638 vertices.
 
-The committed file is the source of truth, not the live service. Migration M016
-records this dataset as *"FILE-BASED. Phase 1 loads from a committed GeoJSON
-export, not from the service: an ETL that fetches during a run cannot be
-replayed"* and states **51 segments**. Provenance URLs live in
-`staging.data_source` (M016), not here.
+The committed file is the source of truth, not the live service. M016 records
+this dataset as *"FILE-BASED. Phase 1 loads from a committed GeoJSON export, not
+from the service: an ETL that fetches during a run cannot be replayed"* and
+states **51 segments**. Provenance URLs live in `staging.data_source`.
 
 The export carries a legacy `crs` member naming `EPSG:4326`. That member is not
 part of RFC 7946 — it is a holdover from the 2008 GeoJSON specification — but it
-names the CRS RFC 7946 mandates anyway, so no reprojection is needed. The
-generator asserts it and fails if it ever says anything else.
+names the CRS RFC 7946 mandates anyway, so no reprojection is needed. Both the
+generator and the importer assert it.
 
-## Scope: the full network, not a sample
+## `segment_id` in this fixture is the `source_ref`, not a database id
 
-**The seed is all 51 segments.** Plan task C3 says *"roughly 20 route segments …
-not the full dataset — the skeleton must start fast and work offline."* Measured,
-that rationale does not hold and the sample costs more than it saves:
+⚠️ **The most important caveat in this file.**
 
-| | 20-segment sample | all 51 |
-| :--- | :--- | :--- |
-| Minified size | 11,220 bytes | 29,155 bytes |
-| Connected components (exact endpoint match) | **10** | **3** |
-| Centreline length | 23.3 km | 49.3 km |
-| Vertices | 238 | 638 |
+The contract types `segment_id` as `core.route_segment.id`, which is
+`GENERATED ALWAYS AS IDENTITY` and unknowable outside the database. An earlier
+version of this fixture used `OBJECTID` as a stand-in. Measured against a real
+load, that matched the assigned identity for only **32 of 51** features — the
+importer's `src` CTE has no `ORDER BY`, so insert order is a property of the
+query plan, not of the file.
 
-- **Size is not a constraint.** 29 KB loads instantly and works offline just as
-  well as 11 KB.
-- **A sample destroys the network.** Ten disconnected components against three.
-  Lane 2's pgRouting spike depends on C3 and would be measuring an artefact of
-  the sampling rather than the greenway.
-- **A sample makes the Stage D visual check ambiguous.** Stage D's DoD is *"the
-  greenway is visible."* With 20 of 51 segments a reader cannot distinguish a
-  rendering bug from absent seed data.
-- **M016 already treats this dataset as the full Phase 1 load path.** A separate
-  20-segment path would be a second source of truth.
+So this fixture carries **`source_ref` (`OBJECT_ID`)** as `segment_id`. That
+value is stable, traceable to the source, and joins
+`core.route_segment.source_ref`.
 
-This requires amending C3's wording. **Tracked as roadmap item B-O1.**
+**Use it for shape and attribute assertions, and join on `source_ref`. Never
+assert that `segment_id` equals a database identity value — it does not.**
 
-All 15 distinct `PHASE_DESCRIPTION` × `TYPOLOGY` combinations are present, so the
-seed exercises every status and type value the endpoint can return. The generator
-asserts the count and fails if a new combination appears — which would mean the
-vocabulary in M011 is incomplete.
+Verified against a live database after a real ETL run:
 
-## Field mapping
+| Check | Result |
+| :--- | :--- |
+| `segment_id` joins `core.route_segment.source_ref` | 51 / 51 |
+| `phase` and `type` match the database | 51 / 51 |
+| Geometry matches the database | 51 / 51 |
+| Validates against `SegmentFeatureCollection` in `openapi.yaml` | ✅ |
+
+Minified it is **26,043 bytes** — the figure to set the D2 response-size budget
+against.
+
+## Vocabulary
 
 Source values are translated to the vocabulary **codes** seeded by M011. The maps
 in the generator match `scripts/etl/cityRouteSegments.js`.
 
-### `segments.seed.geojson` — database columns
+> `scripts/data-validation/code_translations.csv` is **stale and wrong** — it maps
+> to `off_street` / `on_street`, which exist in no vocabulary, and names a table
+> `core.route_phase` that no migration creates. Do not use it as a reference.
+> Tracked as roadmap item B-O5.
 
-| Source field | Seed property | Notes |
+| Source | Fixture field | Values |
 | :--- | :--- | :--- |
 | — | `source` | Constant `city_route_segments` — `staging.data_source.code` (M016) |
 | `OBJECTID` | `source_ref` | Stringified. The natural key for the `(source, source_ref)` upsert |
@@ -129,18 +163,3 @@ A "fixed seed extract" that cannot be rebuilt is not fixed — it is a snapshot 
 a lost state. The generator replaces trust with reproducibility: run it, and
 `git diff --exit-code -- seed/` proves the committed files are what the source
 produces.
-**Selection.** 20 of 52 features, chosen to cover every `phase` × `type`
-combination present in the source (15 combinations), plus 5 extra drawn
-from the largest groups. Not a random or first-N sample — it's picked so
-the seed alone exercises every status/type value the endpoint can return.
-
-## Load locally
-
-With the pinned database running and migrations applied:
-
-```bash
-npm run seed
-```
-
-The command is safe to repeat. It upserts the fixed rows using `seed:<segment_id>`
-source references and lets the database trigger derive the EPSG:26917 geometry.

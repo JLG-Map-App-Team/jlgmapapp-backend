@@ -128,10 +128,25 @@ components:
             Segment status (FR-05) — ADR-001 §4.8. Values are
             core.segment_status.code, seeded by migration M011.
 
-            Nullable because core.route_segment.status_code is a nullable
-            reference and scripts/etl/cityRouteSegments.js explicitly writes
-            null when PHASE_DESCRIPTION is absent from the source row. A client
-            must handle a segment with no known status.
+            NULLABLE, AND REACHABLE. core.route_segment.status_code is a
+            nullable reference, and scripts/etl/cityRouteSegments.js treats an
+            absent PHASE_DESCRIPTION as acceptable: the row loads with a null
+            status. A client MUST handle a segment with no known status, and MUST
+            render that state distinguishably rather than falling through to a
+            default style — an unstyled segment is indistinguishable from an
+            open one, which is the failure the importer's TYPOLOGY check exists
+            to prevent.
+
+            Decided 2026-08-19 (roadmap B-O3): keep null rather than introduce an
+            "unknown" vocabulary member. The committed export currently has 0 of
+            51 features missing PHASE_DESCRIPTION, so this branch is unexercised
+            in practice. Named alternative if that changes: add an `unknown` row
+            to core.segment_status, make the column NOT NULL, and drop null from
+            this enum — a BREAKING change for any client branching on this field.
+            A cheaper first step exists: the source also carries an integer PHASE
+            field that is one-to-one with PHASE_DESCRIPTION across all 51
+            features, so a missing description could be derived rather than
+            invented.
 
         phase_label:
           type: string
@@ -160,8 +175,18 @@ components:
             Segment type (FR-06) — ADR-001 §4.8. Values are
             core.segment_type.code, seeded by migration M011.
 
-            Nullable for the same reason as `phase`: core.route_segment.type_code
-            is a nullable reference.
+            NULLABLE BUT NOT REACHABLE THROUGH THE CITY IMPORTER.
+            core.route_segment.type_code is a nullable reference, so this field
+            is typed nullable to match the schema. But
+            scripts/etl/cityRouteSegments.js treats an absent TYPOLOGY as a ROW
+            ERROR: the row stays in staging carrying its error and never reaches
+            core. So no row loaded by that importer can have a null type.
+
+            The asymmetry with `phase` is deliberate and is recorded here so it
+            is not read as an oversight. A null type can still arrive from a
+            future admin surface, a second importer, or direct SQL, which is why
+            the field stays nullable. Same B-O3 decision and same named
+            alternative as `phase`.
 
         type_label:
           type: string
