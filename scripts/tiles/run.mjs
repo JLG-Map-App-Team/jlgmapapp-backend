@@ -21,7 +21,10 @@
  *     --dry-run
  *
  * Env (required unless --dry-run)
- *   R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET
+ *   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, R2_BUCKET
+ *
+ *   The token needs the "Workers R2 Storage: Edit" permission. wrangler
+ *   reads it non-interactively — no separate S3-style access key/secret.
  *
  * EXIT CODES
  *   0  succeeded, or a dry run
@@ -32,11 +35,11 @@
 import { argv, env, exit } from 'node:process';
 import { spawn } from 'node:child_process';
 import { bboxToExtractFlag, DETROIT_BBOX } from './detroitRegion.js';
-import { createR2Client, uploadPmtiles } from './r2Client.js';
+import { ensureBucket, uploadObject } from './wrangler.js';
 import { OSM_ATTRIBUTION_TEXT } from './attribution.js';
 
 const DEFAULT_KEY = 'basemaps/detroit.pmtiles';
-const REQUIRED_ENV = ['R2_ACCOUNT_ID', 'R2_ACCESS_KEY_ID', 'R2_SECRET_ACCESS_KEY', 'R2_BUCKET'];
+const REQUIRED_ENV = ['CLOUDFLARE_API_TOKEN', 'CLOUDFLARE_ACCOUNT_ID', 'R2_BUCKET'];
 
 function usage(message) {
   if (message) console.error(`error: ${message}\n`);
@@ -133,13 +136,14 @@ async function main() {
   if (missing.length) return usage(`missing required env var(s): ${missing.join(', ')}`);
 
   try {
-    const client = createR2Client({
-      accountId: env.R2_ACCOUNT_ID,
-      accessKeyId: env.R2_ACCESS_KEY_ID,
-      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+    await ensureBucket(env.R2_BUCKET);
+    const result = await uploadObject({
+      bucket: env.R2_BUCKET,
+      key: opts.key,
+      filePath: opts.output,
+      contentType: 'application/octet-stream',
     });
-    const result = await uploadPmtiles({ client, bucket: env.R2_BUCKET, key: opts.key, filePath: opts.output });
-    console.log(`uploaded  s3://${result.bucket}/${result.key} (${result.bytes} bytes)`);
+    console.log(`uploaded  r2://${result.bucket}/${result.key}`);
   } catch (err) {
     console.error(`R2 upload failed: ${err.message}`);
     return 1;

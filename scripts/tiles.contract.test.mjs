@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import test from 'node:test'
 import { OSM_ATTRIBUTION_HTML, OSM_ATTRIBUTION_TEXT, pmtilesSource } from './tiles/attribution.js'
 import { bboxToExtractFlag, DETROIT_BBOX } from './tiles/detroitRegion.js'
-import { r2Endpoint } from './tiles/r2Client.js'
+import { buildCreateBucketArgs, buildPutObjectArgs } from './tiles/wrangler.js'
 import { parseArgs } from './tiles/run.mjs'
 
 test('DETROIT_BBOX covers the committed greenway extent', async () => {
@@ -46,8 +46,24 @@ test('pmtilesSource carries the attribution on the source object itself', () => 
   assert.equal(source.attribution, OSM_ATTRIBUTION_HTML)
 })
 
-test('r2Endpoint builds the account-scoped R2 endpoint', () => {
-  assert.equal(r2Endpoint('abc123'), 'https://abc123.r2.cloudflarestorage.com')
+test('buildCreateBucketArgs matches the wrangler r2 bucket create syntax', () => {
+  assert.deepEqual(buildCreateBucketArgs('jlgmapapp-tiles'), ['r2', 'bucket', 'create', 'jlgmapapp-tiles'])
+})
+
+test('buildPutObjectArgs matches the wrangler r2 object put syntax and forces --remote', () => {
+  const args = buildPutObjectArgs({
+    bucket: 'jlgmapapp-tiles',
+    key: 'basemaps/detroit.pmtiles',
+    filePath: 'tmp/detroit.pmtiles',
+    contentType: 'application/octet-stream',
+  })
+
+  assert.deepEqual(args, [
+    'r2', 'object', 'put', 'jlgmapapp-tiles/basemaps/detroit.pmtiles',
+    '--file', 'tmp/detroit.pmtiles',
+    '--content-type', 'application/octet-stream',
+    '--remote',
+  ])
 })
 
 test('parseArgs reads source, output, key, maxzoom and dry-run', () => {
