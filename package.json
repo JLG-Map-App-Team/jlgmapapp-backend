@@ -28,8 +28,9 @@
     "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs",
     "lint": "npm run lint:api",
     "seed": "node scripts/seed.mjs",
-    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs",
+    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs scripts/tiles.contract.test.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "tiles:detroit": "node --env-file-if-exists=.env scripts/tiles/run.mjs",
     "db:migrate": "node scripts/apply-migrations.mjs"
   },
   "devDependencies": {
@@ -46,6 +47,7 @@
     "typescript": "5.9.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1115.0",
     "express": "^5.2.1",
     "pg": "8.16.3"
   }
