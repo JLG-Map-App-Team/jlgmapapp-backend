@@ -14,14 +14,14 @@
     "seed:build": "node scripts/seed/build-segments-seed.mjs",
     "gen:api:check": "node scripts/check-api-types-fresh.mjs",
     "typecheck": "tsc --noEmit",
-  "seed": "node scripts/seed.mjs",
-  "test": "node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs",
-  "test:a11y": "node --test scripts/accessibility.test.mjs",
-  "build": "tsc",
-  "db:migrate": "node scripts/apply-migrations.mjs",
-  "topology:spike": "node scripts/topology-spike.mjs",
-  "verify:migrations": "node scripts/verify-migrations.mjs",
-  "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck",
+    "seed": "node scripts/seed.mjs",
+    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs",
+    "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "build": "tsc",
+    "db:migrate": "node scripts/apply-migrations.mjs",
+    "topology:spike": "node scripts/topology-spike.mjs",
+    "verify:migrations": "node scripts/verify-migrations.mjs",
+    "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "migrate": "dbmate --migrations-dir ./src/database/migrations --migrations-table public.schema_migrations up",
@@ -31,12 +31,15 @@
   },
   "devDependencies": {
     "@redocly/cli": "2.46.2",
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.23.1",
     "axe-core": "^4.13.0",
     "jsdom": "^29.1.1",
     "openapi-typescript": "7.13.0",
     "typescript": "5.9.3"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "pg": "^8.23.0"
   }
 }
