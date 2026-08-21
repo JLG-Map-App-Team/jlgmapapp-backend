@@ -19,6 +19,7 @@
   "test:a11y": "node --test scripts/accessibility.test.mjs",
   "build": "tsc",
   "db:migrate": "node scripts/apply-migrations.mjs",
+  "topology:spike": "node scripts/topology-spike.mjs",
   "verify:migrations": "node scripts/verify-migrations.mjs",
   "verify": "npm run lint:api && npm run gen:api:check && npm run typecheck",
     "db:up": "docker compose up -d",
