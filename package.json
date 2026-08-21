@@ -25,7 +25,12 @@
     "etl:segments": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments",
     "etl:segments:dry": "node --env-file-if-exists=.env scripts/etl/run.mjs city_route_segments --dry-run",
     "build": "tsc",
-    "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs"
+    "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs",
+    "lint": "npm run lint:api",
+    "seed": "node scripts/seed.mjs",
+    "test": "npm run build && node --test scripts/seed-contract.test.mjs scripts/seed.test.mjs scripts/segments.integration.test.mjs",
+    "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "db:migrate": "node scripts/apply-migrations.mjs"
   },
   "devDependencies": {
     "@redocly/cli": "2.46.2",
@@ -33,8 +38,10 @@
     "@types/pg": "^8.23.1",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
+    "axe-core": "^4.13.0",
     "dbmate": "2.35.0",
     "js-yaml": "^4.1.0",
+    "jsdom": "^29.1.1",
     "openapi-typescript": "7.13.0",
     "typescript": "5.9.3"
   },
