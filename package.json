@@ -20,6 +20,7 @@
     "test:load": "npm run build && node --env-file-if-exists=.env --test scripts/segmentsload.test.mjs",
     "test:integration": "npm run build && node --env-file-if-exists=.env --test scripts/segments.integration.test.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs",
+    "test:routing-gate": "node --env-file-if-exists=.env --test scripts/routing-gate.test.mjs",
     "test": "npm run test:contract && npm run test:load && npm run test:integration && npm run test:a11y",
     "topology:spike": "node scripts/topology-spike.mjs",
     "db:up": "docker compose up -d --wait",
