@@ -2,28 +2,28 @@
  * OSM/Protomaps attribution (D3).
  *
  * The PMTiles basemap is a Produced Work of the OpenStreetMap dataset, which
- * is licensed under the ODbL — a share-alike license that requires visible
- * attribution wherever the map is displayed. docs/walking_skeleton_plan.md's
- * D3 row calls this out by name and says to add it in this step, not later.
+ * is licensed under the ODbL and requires visible attribution wherever the
+ * map is displayed.
  *
- * The harness (D4) does not exist yet, so there is nowhere to click an
- * "attribution control" on today. What D3 can do instead is make the
- * attribution part of the map source definition itself, via pmtilesSource()
- * below, so whichever code builds the MapLibre style has to carry it along
- * rather than add it as an afterthought.
+ * The Detroit PMTiles archive is hosted by the project through GitHub Pages.
+ * GitHub Pages was manually verified to support HTTP byte-range requests
+ * (206 Partial Content), which PMTiles requires.
  */
+
+export const DETROIT_PMTILES_URL =
+  'https://jlg-map-app-team.github.io/jlgmapapp-tiles/detroit.pmtiles';
 
 export const OSM_ATTRIBUTION_HTML =
   '<a href="https://protomaps.com">Protomaps</a> © <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>';
 
-export const OSM_ATTRIBUTION_TEXT = 'Protomaps © OpenStreetMap contributors';
+export const OSM_ATTRIBUTION_TEXT =
+  'Protomaps © OpenStreetMap contributors';
 
 /**
- * A MapLibre vector source pointing at our own R2-hosted PMTiles archive,
- * carrying the required attribution as part of the source object rather
- * than as separate map configuration.
+ * A MapLibre vector source pointing at the project-hosted Detroit PMTiles
+ * archive, with the required attribution attached to the source itself.
  */
-export function pmtilesSource(pmtilesUrl) {
+export function pmtilesSource(pmtilesUrl = DETROIT_PMTILES_URL) {
   return {
     type: 'vector',
     url: `pmtiles://${pmtilesUrl}`,
