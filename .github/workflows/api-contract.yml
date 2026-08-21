@@ -1,6 +1,13 @@
-# Stage C gate: install -> typecheck -> lint -> test -> build -> deploy.
-# The deploy step publishes a versioned CI artifact; production deployment is
-# deliberately deferred to Stage E, when the origin and hosting targets exist.
+# Stage C gate: install -> typecheck -> lint -> contract -> database -> a11y.
+#
+# BUILD AND DEPLOY ARE DELIBERATELY ABSENT. They were named in roadmap task C5
+# and were present here, but they could not have run: src/ contains types,
+# utils/problem.ts, db/pool.js and three .gitkeep placeholders — there is no
+# Express entrypoint — and tsconfig.json is --noEmit, so `dist/` is never
+# produced and the artefact step tarred nothing. They return at plan task D1,
+# when the endpoint exists; production deployment stays at Stage E per plan
+# section 5. Recording the reason here so nobody re-adds them as a publish
+# button in front of an empty directory.
 
 name: API contract
 
@@ -19,7 +26,25 @@ concurrency:
 jobs:
   contract:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+
+    env:
+      # docker-compose.yml maps ${POSTGRES_PORT:-5432}:5432, so the host port is
+      # 55432 here. 5432 is left free for a developer's own container.
+      POSTGRES_PORT: '55432'
+
+      # src/db/pool.js REQUIRES this and refuses a default, on the stated
+      # reasoning that a fallback connection string is how a script gets pointed
+      # at the wrong database. dbmate reads the same variable. Neither was set in
+      # the previous version of this workflow, so the migrate and load steps
+      # could not have connected — .env.example hardcodes port 5432, and CI has
+      # no .env at all.
+      #
+      # Credentials match docker-compose.yml. They are development credentials
+      # for an ephemeral container that accepts no external connections; they
+      # are not a secret and putting them in a repository secret would imply
+      # they were.
+      DATABASE_URL: postgres://jlgmapapp:jlgmapapp_dev@localhost:55432/jlgmapapp?sslmode=disable
 
     steps:
       - uses: actions/checkout@v4
@@ -33,44 +58,62 @@ jobs:
       # lockfile is out of step with package.json. `npm install` would silently
       # resolve new versions, which is how codegen output drifts between
       # machines for no visible reason.
+      #
+      # This step fails outright if package-lock.json is not committed. That is
+      # the intended behaviour: a reproducible install is the whole claim.
       - name: Install
         run: npm ci
 
       - name: Typecheck
         run: npm run typecheck
 
+      # Was `npm run lint`, which package.json does not define. The script is
+      # `lint:api`, and the name is worth keeping as it is — it lints the API
+      # specification, not the source.
       - name: Lint the OpenAPI spec
-        run: npm run lint
+        run: npm run lint:api
 
-      # Fails if openapi_B2.yaml was edited without regenerating the types.
+      # Fails if the spec was edited without regenerating the types.
       - name: Check generated types are in sync with the spec
         run: npm run gen:api:check
 
+      # Needs no database: it validates the committed fixture against
+      # components.schemas compiled out of the spec. Run before the container so
+      # a contract break fails in seconds rather than after a Postgres pull.
+      - name: Contract test (fixture against spec)
+        run: npm run test:contract
+
+      # Project name is jlgmapapp-ci, NOT jlgmapapp-c2. scripts/verify-migrations.mjs
+      # defaults to jlgmapapp-c2 and runs `compose down -v` on entry and exit; if
+      # the two ever shared a project name, that script would destroy this job's
+      # database. Keep them distinct.
       - name: Start PostGIS and pgRouting
-        run: POSTGRES_PORT=55432 docker compose -p jlgmapapp-c2 up -d --wait
+        run: docker compose -p jlgmapapp-ci up -d --wait
 
+      # Was `npm run db:migrate`, which package.json does not define.
       - name: Apply migrations
-        run: POSTGRES_PORT=55432 npm run db:migrate
+        run: npm run migrate
 
-      - name: Seed the fixed route extract
-        run: POSTGRES_PORT=55432 npm run seed
+      # Was `npm run seed`, which package.json does not define and which no
+      # longer has a subject: seed/README.md records that segments.seed.geojson
+      # was deleted and that the ETL importer IS Stage C3's seed step. Called by
+      # its real name rather than aliased, so there is visibly one load path.
+      - name: Load the route segments
+        run: npm run etl:segments
 
-      - name: Run the real database test
-        run: POSTGRES_PORT=55432 npm test
+      # Was `npm test`, undefined. Asserts the state the load left behind —
+      # 51 segments, geom in 4326, geom_proj in 26917, unique source_refs, and
+      # an etl_run recorded as succeeded rather than topology-aborted.
+      - name: Database test (against the loaded network)
+        run: npm run test:load
 
-      - name: Run the accessibility gate
+      # Was already correct as a command, but could not import: jsdom and
+      # axe-core were not in devDependencies. Both are now pinned.
+      - name: Accessibility gate
         run: npm run test:a11y
 
-      - name: Build
-        run: npm run build
-
-      - name: Package deployment artifact
-        run: tar -czf jlgmapapp-backend-${{ github.sha }}.tgz dist package.json package-lock.json
-
-      - name: Deploy CI artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: jlgmapapp-backend-${{ github.sha }}
-          path: jlgmapapp-backend-${{ github.sha }}.tgz
-          if-no-files-found: error
-          retention-days: 14
+      # Container teardown, so a cancelled or failed run does not leave a volume
+      # behind on a self-hosted runner. Harmless on ubuntu-latest.
+      - name: Tear down the database
+        if: always()
+        run: docker compose -p jlgmapapp-ci down -v
