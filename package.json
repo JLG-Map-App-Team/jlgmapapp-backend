@@ -23,6 +23,7 @@
     "test:routing-gate": "node --env-file-if-exists=.env --test scripts/routing-gate.test.mjs",
     "test": "npm run test:contract && npm run test:load && npm run test:integration && npm run test:a11y",
     "topology:spike": "node scripts/topology-spike.mjs",
+    "buffer:spike": "node --env-file-if-exists=.env scripts/buffer-spike.mjs",
     "db:up": "docker compose up -d --wait",
     "db:down": "docker compose down",
     "bootstrap": "npm run db:up && npm run migrate && npm run etl:segments",
