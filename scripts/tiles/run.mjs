@@ -8,6 +8,7 @@
 
 import { argv, exit } from 'node:process';
 import { spawn } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 import { bboxToExtractFlag, DETROIT_BBOX } from './detroitRegion.js';
 import {
   DETROIT_PMTILES_URL,
@@ -121,13 +122,18 @@ async function main() {
   }
 
   console.log(`extracted  ${opts.output}`);
-  console.log(`published  ${DETROIT_PMTILES_URL}`);
+  console.log(
+    `next: commit it as detroit.pmtiles to the tiles repo, then npm run tiles:verify`,
+  );
+  console.log(`serves at  ${DETROIT_PMTILES_URL}`);
   console.log(`attribution required: ${OSM_ATTRIBUTION_TEXT}`);
 
   return 0;
 }
 
-if (import.meta.url === `file://${argv[1]}`) {
+// pathToFileURL, not `file://${argv[1]}`: on Windows the latter never matches
+// (file:///C:/... vs file://C:\...), so main() silently never ran.
+if (import.meta.url === pathToFileURL(argv[1]).href) {
   let code = 2;
 
   try {

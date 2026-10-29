@@ -38,6 +38,7 @@
     "seed": "node scripts/seed.mjs",
     "test": "npm run build && node --test scripts/seedcontract.test.mjs scripts/segmentsload.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs scripts/tiles.contract.test.mjs",
     "tiles:detroit": "node --env-file-if-exists=.env scripts/tiles/run.mjs",
+    "tiles:verify": "node scripts/tiles/verify.mjs",
     "db:migrate": "node scripts/apply-migrations.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs"
   },

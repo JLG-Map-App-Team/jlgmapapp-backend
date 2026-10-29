@@ -8,10 +8,15 @@
  * The Detroit PMTiles archive is hosted by the project through GitHub Pages.
  * GitHub Pages was manually verified to support HTTP byte-range requests
  * (206 Partial Content), which PMTiles requires.
+ *
+ * The tiles repository moved from the JLG-Map-App-Team org to
+ * wassupitzmaha/jlgmapapp-tiles. GitHub redirects the repository itself but
+ * NOT its Pages site, so the old jlg-map-app-team.github.io URL now 404s.
+ * `npm run tiles:verify` checks the live URL.
  */
 
 export const DETROIT_PMTILES_URL =
-  'https://jlg-map-app-team.github.io/jlgmapapp-tiles/detroit.pmtiles';
+  'https://wassupitzmaha.github.io/jlgmapapp-tiles/detroit.pmtiles';
 
 export const OSM_ATTRIBUTION_HTML =
   '<a href="https://protomaps.com">Protomaps</a> © <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>';
