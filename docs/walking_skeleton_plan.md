@@ -1,4 +1,6 @@
-# Walking Skeleton Plan v1
+# Walking Skeleton Plan v1 — OLD VERSION (superseded)
+
+> **⚠️ Superseded on 2026-10-29 by [WALKING_SKELETON_PLAN_v2.md](WALKING_SKELETON_PLAN_v2.md).** Kept for reference only; do not update. Use v2 for current scope, status and ADR references.
 
 **Repository:** `jlgmapapp-backend`
 **Suggested path:** `docs/WALKING_SKELETON_PLAN_v1.md`
