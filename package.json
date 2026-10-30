@@ -18,6 +18,7 @@
     "build": "tsc",
     "test:contract": "node --test scripts/seedcontract.test.mjs",
     "test:load": "npm run build && node --env-file-if-exists=.env --test scripts/segmentsload.test.mjs",
+    "test:vocabulary": "node --env-file-if-exists=.env --test scripts/vocabulary.drift.test.mjs",
     "test:integration": "npm run build && node --env-file-if-exists=.env --test scripts/segments.integration.test.mjs",
     "test:routing-gate": "node --env-file-if-exists=.env --test scripts/routing-gate.test.mjs",
     "topology:spike": "node scripts/topology-spike.mjs",

@@ -16,13 +16,16 @@ import test from 'node:test'
 import pg from 'pg'
 
 const { Client } = pg
-const databaseConfig = {
-  host: process.env.PGHOST ?? 'localhost',
-  port: Number(process.env.PGPORT ?? process.env.POSTGRES_PORT ?? 5432),
-  database: process.env.PGDATABASE ?? process.env.POSTGRES_DB ?? 'jlgmapapp',
-  user: process.env.PGUSER ?? process.env.POSTGRES_USER ?? 'jlgmapapp',
-  password: process.env.PGPASSWORD ?? process.env.POSTGRES_PASSWORD ?? 'jlgmapapp_dev',
-}
+// DATABASE_URL first, matching src/db/pool.ts and the CI workflow.
+const databaseConfig = process.env.DATABASE_URL
+  ? { connectionString: process.env.DATABASE_URL }
+  : {
+      host: process.env.PGHOST ?? 'localhost',
+      port: Number(process.env.PGPORT ?? process.env.POSTGRES_PORT ?? 5432),
+      database: process.env.PGDATABASE ?? process.env.POSTGRES_DB ?? 'jlgmapapp',
+      user: process.env.PGUSER ?? process.env.POSTGRES_USER ?? 'jlgmapapp',
+      password: process.env.PGPASSWORD ?? process.env.POSTGRES_PASSWORD ?? 'jlgmapapp_dev',
+    }
 
 const CSV_PATH = resolve(import.meta.dirname, 'data-validation/code_translations.csv')
 

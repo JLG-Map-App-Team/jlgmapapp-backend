@@ -94,6 +94,12 @@ jobs:
       - name: Apply migrations
         run: npm run migrate
 
+      # Every code the ETL translation table produces must exist in the
+      # vocabulary the migrations just seeded. Migrations are the source of
+      # truth; this fails the build if the translation layer drifts from them.
+      - name: Vocabulary drift check (ETL translations vs migrations)
+        run: npm run test:vocabulary
+
       # Was `npm run seed`, which package.json does not define and which no
       # longer has a subject: seed/README.md records that segments.seed.geojson
       # was deleted and that the ETL importer IS Stage C3's seed step. Called by
