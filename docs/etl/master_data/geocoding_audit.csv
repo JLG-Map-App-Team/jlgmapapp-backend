@@ -1,0 +1,33 @@
+Record group,Name,Latitude,Longitude,Confidence,Method / source,Source URL,Review note
+Destination,Aretha Franklin Amphitheater,42.3340217,-83.0216925,High,Named venue footprint centroid,https://www.openstreetmap.org/node/10905098166,Official venue address: 2600 Atwater St.
+Destination,Eastern Market,42.3484637,-83.0399929,High,Eastern Market Shed 2 footprint centroid,https://www.openstreetmap.org/way/581362401,Representative point for the market district.
+Destination,Hamtramck Downtown,42.39861,-83.05889,Medium,Joseph Campau historic downtown area centroid,https://www.nps.gov/places/joseph-campau-historic-district.htm,Area label rather than a single-address destination; review if a different downtown anchor is intended.
+Destination,Jayne Field / Lasky Recreation Center,42.4131663,-83.0597699,High,Official address geocode: 13280 Conant St,https://detroitmi.gov/departments/detroit-parks-recreation/parks-and-greenways/jayne-lasky-park,Address verified by City of Detroit.
+Destination,Highland Park Ford Plant,42.4105072,-83.0995643,High,Historic plant footprint centroid,https://www.openstreetmap.org/way/113033769,Named landmark at 91 Manchester Pkwy.
+Destination,Marygrove,42.4171307,-83.1539881,High,Official address geocode: 8425 W McNichols Rd,https://marygroveconservancy.org/contact/,Address verified by Marygrove Conservancy.
+Destination,University of Detroit Mercy,42.4140329,-83.1378653,High,McNichols campus footprint centroid,https://www.openstreetmap.org/way/58478267,Representative point for the McNichols campus.
+Destination,American Indian Family Services,42.3283023,-83.1470851,High,Official address geocode: 4880 Lawndale St,https://www.uihi.org/uihp-profiles/detroit/,Address verified by Urban Indian Health Institute profile.
+Destination,Ambassador Bridge,42.3123584,-83.0743095,High,Bridge geometry centroid,https://www.openstreetmap.org/way/988967484,Representative point on the bridge structure.
+Destination,FREC,42.3248626,-83.0808787,High,Ford Resource and Engagement Center footprint centroid,https://www.openstreetmap.org/way/71187938,Named facility at 2826 Bagley St.
+Destination,Michigan Central Station,42.328721,-83.0778043,High,Station footprint centroid,https://www.openstreetmap.org/way/805151309,Named landmark footprint.
+Park,Palmer Park,42.4254627,-83.1172509,High,Park boundary centroid,https://www.openstreetmap.org/way/58897794,Named park polygon.
+Park,Ernest T. Ford Recreation Center,42.4088157,-83.1070221,High,Official address geocode: 10 Pitkin St,https://www.highlandparkmi.gov/community/ernest-t-ford-recreation-center/,Address verified by City of Highland Park.
+Park,Ives Field,42.4084634,-83.1084712,Medium,Mapped athletic field centroid (Reggie McKenzie Field),https://www.openstreetmap.org/way/58421710,Likely current name for Ives Field; confirm historical naming if needed.
+Park,Ben Hill Playground,42.40351,-83.12057,High,Playground boundary centroid,https://www.openstreetmap.org/way/636724450,Named park polygon near 2226 Fenkell Ave.
+Park,Jayne Playground,42.4131663,-83.0597699,High,Jayne-Lasky Park official address geocode,https://detroitmi.gov/departments/detroit-parks-recreation/parks-and-greenways/jayne-lasky-park,Same park complex as Jayne Field/Lasky Recreation Center.
+Park,Pope Park,42.3982549,-83.0591048,High,Park boundary centroid,https://www.openstreetmap.org/way/40438314,Named park polygon.
+Park,Littlefield Playfield,42.3827883,-83.1554211,High,Park boundary centroid,https://www.openstreetmap.org/way/632194215,Named park polygon.
+Park,Laker Park,42.3484326,-83.1455421,High,Park boundary centroid,https://www.openstreetmap.org/way/408989185,Named park polygon.
+Park,Graham Park,42.3419924,-83.1540475,Medium,"Published address geocode: 8763 Graham St, Dearborn",https://www.healthydearborn.org/action-teams/healthy-environments/graham-park,Framework lists Detroit; published park address is in Dearborn. Review jurisdiction if material.
+Park,Forest Park,42.3574028,-83.0469082,High,Park boundary centroid,https://www.openstreetmap.org/way/1027129709,Named park polygon.
+Park,Dues Playground,42.3453604,-83.0349601,High,City inventory address geocode: 1991 Antietam Ave,https://detroitmi.gov/sites/detroitmi.localhost/files/2022-06/AppendixB_Phases.pdf,Address from City of Detroit parks inventory.
+Park,Park East,,,Unresolved,No unique match,,Ambiguous name; no defensible unique Detroit-area match found. Coordinate intentionally left blank.
+Park,Lafayette Park,42.3398647,-83.0348037,Medium,Lafayette Park neighborhood/park representative point,https://www.openstreetmap.org/node/5981614934,Broad place name; review if a specific green space was intended.
+Park,Campus Martius,42.3315615,-83.0466224,High,Park boundary centroid,https://www.openstreetmap.org/way/107622369,Named park polygon.
+Park,Roosevelt Park,42.3304297,-83.0772607,High,Park boundary centroid,https://www.openstreetmap.org/relation/11809325,Named park polygon.
+Park,Milliken State Park,42.3320145,-83.0277516,High,State park boundary centroid,https://www.openstreetmap.org/way/382924779,Named park polygon.
+Park,Hart Plaza,42.3274176,-83.04456,High,Plaza boundary centroid,https://www.openstreetmap.org/way/69349404,Named civic plaza polygon.
+Park,Clark Park,42.3171489,-83.0924049,High,Park boundary centroid,https://www.openstreetmap.org/way/58414549,Named park polygon.
+Park,Holy Cross Cemetery,42.3147633,-83.1404365,High,Cemetery boundary centroid,https://www.openstreetmap.org/way/58784566,Named cemetery polygon.
+Park,Higgins Park Playground,42.298164,-83.131139,High,Published address geocode: 9200 Olivet St,https://saydetroit.org/higgins-park-is-born/,Address verified by SAY Detroit project page.
+Park,Delray Recreation Center,42.2900872,-83.1287303,High,Recreation center footprint centroid,https://www.openstreetmap.org/way/383232789,Named facility footprint.

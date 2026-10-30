@@ -68,6 +68,25 @@ npm run verify:migrations
 The migration verification uses a disposable Compose project and host port `55432`,
 so it can run while the normal database is using port `5432`.
 
+## Populate the database from scratch
+
+With the container running and `.env` copied from `.env.example`:
+
+```bash
+npm install
+npm run migrate        # dbmate; safe to re-run (applies only what is new)
+npm run seed           # 51 route segments from seed/segments.seed.geojson
+npm run etl:master     # Master Data: 55 access points, 1 restroom, 19 landmarks, 32 parks
+```
+
+Every step is idempotent: running it again updates rows and inserts nothing.
+`etl:master` reads the committed CSVs in `docs/etl/master_data/` (exported from the
+Phase 1 Master Data Collection workbook) and translates every categorical value
+through `scripts/data-validation/code_translations.csv`, so only codes the
+migrations define reach the database. Park East has no coordinate and is
+quarantined in `staging.poi_raw` rather than loaded. Use `npm run etl:master:dry`
+to see what would load without writing anything.
+
 ## Team
 - Maha — Project Lead Software Engineer
 - Asmita — Cybersecurity Intern

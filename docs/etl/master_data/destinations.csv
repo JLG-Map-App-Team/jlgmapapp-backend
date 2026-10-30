@@ -1,0 +1,20 @@
+Map #,Name,poi_type_code,Lat,Lon,Metres to centreline,Nearest segment,Coordinate source,Status
+1,Detroit Riverwalk & Dequindre Cut,landmark,42.32709786,-83.04185055,0,Riverfront (Dequindre Cut to 8th),Matched to AP-29 (route-aligned),have
+2,DNR Outdoor Adventure Center,landmark,42.33354627,-83.02676592,0,Dequindre Cut/Detroit Riverwalk,Matched to AP-32 (route-aligned),have
+3,Aretha Franklin Amphitheater,landmark,42.3340217,-83.0216925,,,Named venue footprint centroid,have
+4,Eastern Market,landmark,42.3484637,-83.0399929,,,Eastern Market Shed 2 footprint centroid,have
+5,Hamtramck Downtown,landmark,42.39861,-83.05889,,,Joseph Campau historic downtown area centroid,have
+6,Jayne Field / Lasky Recreation Center,landmark,42.4131663,-83.0597699,,,Official address geocode: 13280 Conant St,have
+7,Highland Park Ford Plant,landmark,42.4105072,-83.0995643,,,Historic plant footprint centroid,have
+8,Focus: HOPE,landmark,42.40036599,-83.12427655,0,Conrail (Livernois to Rosa Parks),Matched to AP-37-FOCUS (route-aligned),have
+9,Marygrove,landmark,42.4171307,-83.1539881,,,Official address geocode: 8425 W McNichols Rd,have
+10,University of Detroit Mercy,landmark,42.4140329,-83.1378653,,,McNichols campus footprint centroid,have
+11,Romanowski Park,landmark,42.326102,-83.142627,39.5,Romanowski Park,Matched to AP-40 (OSM way 32463352),have
+12,American Indian Family Services,landmark,42.3283023,-83.1470851,,,Official address geocode: 4880 Lawndale St,have
+13,Patton Park,landmark,42.310895,-83.138243,156.2,Patton Park,Matched to AP-42 (OSM way 58788861),have
+14,Historic Fort Wayne,landmark,42.3011836,-83.0979062,0,"GHIB (Junction, Fort, Campbell, Jefferson, Green)",Matched to AP-47 (OSM way 106283810),have
+15,Gordie Howe International Bridge,landmark,42.2952624,-83.1067353,0,"GHIB (Junction, Fort, Campbell, Jefferson, Green)",Matched to AP-48 (OSM way 1272925228),have
+16,Ambassador Bridge,landmark,42.3123584,-83.0743095,,,Bridge geometry centroid,have
+17,FREC,landmark,42.3248626,-83.0808787,,,Ford Resource and Engagement Center footprint centroid,have
+18,Michigan Central Station,landmark,42.328721,-83.0778043,,,Station footprint centroid,have
+19,TCF Center,landmark,42.32611,-83.04694,61.7,Riverfront (Dequindre Cut to 8th),Matched to AP-53 (Wikipedia (1 Washington Blvd)),have

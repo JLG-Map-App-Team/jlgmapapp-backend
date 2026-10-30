@@ -28,6 +28,7 @@
 import { argv, exit } from 'node:process';
 import { closePool } from '../../src/db/pool.js';
 import cityRouteSegments from './cityRouteSegments.js';
+import masterData from './masterData.js';
 
 // Registry. Keys match staging.data_source.code so the name in a command and
 // the name in the provenance table are the same string.
@@ -35,6 +36,12 @@ const IMPORTERS = {
   city_route_segments: {
     module: cityRouteSegments,
     defaultPath: 'docs/etl/Joe_Louis_Greenway_Routes_6582477513894808108.geojson',
+  },
+  // Access points, the Warren restroom, Framework Plan destinations and parks.
+  // Needs route segments loaded first (for nearest segment and distance).
+  master_data: {
+    module: masterData,
+    defaultPath: 'docs/etl/master_data',
   },
 };
 

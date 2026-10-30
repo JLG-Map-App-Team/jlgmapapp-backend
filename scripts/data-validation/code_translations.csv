@@ -48,8 +48,8 @@ access_tier,major,major_access,core.access_point_subtype,,No
 access_tier,major (pavilion),major_access,core.access_point_subtype,Framework Plan defines two tiers (Vol 1 p65); the pavilion is a feature of a major access point. Raw text kept in staging tier_raw,No
 access_tier,minor,minor_access,core.access_point_subtype,,No
 access_tier,TBD_framework_map,[NULL],,Do not guess,Yes
-built_status,likely_existing,likely_existing,,Not a vocabulary. core.access_point.is_built is boolean NOT NULL; mapping is an open decision. Keep raw in staging,Yes
-built_status,proposed_or_existing_TBD,[NULL],,Do not guess,Yes
+built_status,likely_existing,true,,core.access_point.is_built is boolean NOT NULL (default true). Riverwalk plazas marked likely_existing are shown as built,Yes
+built_status,proposed_or_existing_TBD,false,,"Conservative: is_built cannot be null, and the column default (true) would claim an unconfirmed access point exists. Recorded as not built until the Framework map or the City confirms",Yes
 review_flag,[blank],false,,,No
 review_flag,check / YES / any nonblank text,true,,Preserve original text in provenance,Yes
 load_status,have,eligible,,Can continue to validation,No
