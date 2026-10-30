@@ -18,6 +18,7 @@
     "build": "tsc",
     "test:contract": "node --test scripts/seedcontract.test.mjs",
     "test:load": "npm run build && node --env-file-if-exists=.env --test scripts/segmentsload.test.mjs",
+    "test:vocabulary": "node --env-file-if-exists=.env --test scripts/vocabulary.drift.test.mjs",
     "test:integration": "npm run build && node --env-file-if-exists=.env --test scripts/segments.integration.test.mjs",
     "test:routing-gate": "node --env-file-if-exists=.env --test scripts/routing-gate.test.mjs",
     "topology:spike": "node scripts/topology-spike.mjs",
@@ -36,7 +37,7 @@
     "test:segments": "npm run build && node --test scripts/segments.integration.test.mjs",
     "lint": "npm run lint:api",
     "seed": "node scripts/seed.mjs",
-    "test": "npm run build && node --test scripts/seedcontract.test.mjs scripts/segmentsload.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs scripts/tiles.contract.test.mjs",
+    "test": "npm run build && node --test scripts/seedcontract.test.mjs scripts/segmentsload.test.mjs scripts/segments.integration.test.mjs scripts/segments.contract.test.mjs scripts/tiles.contract.test.mjs scripts/vocabulary.drift.test.mjs",
     "tiles:detroit": "node --env-file-if-exists=.env scripts/tiles/run.mjs",
     "db:migrate": "node scripts/apply-migrations.mjs",
     "test:a11y": "node --test scripts/accessibility.test.mjs"

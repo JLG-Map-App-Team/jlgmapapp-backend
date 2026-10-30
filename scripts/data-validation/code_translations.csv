@@ -3,27 +3,52 @@ route_phase,0,open,core.segment_status,Open,No
 route_phase,1,under_construction,core.segment_status,Under Construction,No
 route_phase,2,funded,core.segment_status,Funded,No
 route_phase,3,unfunded,core.segment_status,Unfunded,No
+route_phase_description,Open,open,core.segment_status,Cross-check against numeric PHASE; quarantine disagreement,No
+route_phase_description,Under Construction,under_construction,core.segment_status,Cross-check against numeric PHASE; quarantine disagreement,No
+route_phase_description,Funded,funded,core.segment_status,Cross-check against numeric PHASE; quarantine disagreement,No
+route_phase_description,Unfunded,unfunded,core.segment_status,Cross-check against numeric PHASE; quarantine disagreement,No
 route_typology,Adjacent,adjacent,core.segment_type,,No
 route_typology,Alley,alley,core.segment_type,,No
 route_typology,Bridge,bridge,core.segment_type,,No
 route_typology,Off-Street,off_street_trail,core.segment_type,,No
 route_typology,On-Street,on_street_greenway,core.segment_type,,No
-route_typology,Shared street,shared_street,core.segment_type,,No
+route_typology,Shared street,shared_street,core.segment_type,Exact published value; note the lowercase s in Shared street,No
 poi_type,restroom,restroom,core.poi_type,,No
 poi_type,landmark,landmark,core.poi_type,,No
 poi_type,park,park,core.poi_type,,No
-coordinate_confidence,Exact,exact,,,No
-coordinate_confidence,Non_Exact,non_exact,,,No
-coordinate_confidence,High / high / resolved,high,,Case-insensitive; resolved maps to high,No
-coordinate_confidence,Medium / medium / resolved_approx,medium,,Case-insensitive,No
-coordinate_confidence,Low / low,low,,Case-insensitive,No
-coordinate_confidence,resolved_merged,merged_needs_review,,Shared centroid; manual separation required,Yes
-coordinate_confidence,Unresolved,unresolved,,Do not publish,Yes
-access_tier,major,major,,,No
-access_tier,major (pavilion),major_pavilion,,,No
-access_tier,minor,minor,,,No
+coordinate_confidence,Exact,high,core.coordinate_confidence,Census geocoder EXACT ADDRESS match. Schema 'exact' is reserved for route-derived or surveyed points; distance to trail is checked separately (AP-07 is 310 m out),No
+coordinate_confidence,Non_Exact,medium,core.coordinate_confidence,Census geocoder found the address but not an exact match,No
+coordinate_confidence,High / high / resolved,high,core.coordinate_confidence,Case-insensitive; resolved maps to high,No
+coordinate_confidence,Medium / medium / resolved_approx,medium,core.coordinate_confidence,Case-insensitive,No
+coordinate_confidence,Low / low,low,core.coordinate_confidence,Case-insensitive,No
+coordinate_confidence,resolved_merged,merged,core.coordinate_confidence,Shared centroid; manual separation required,Yes
+coordinate_confidence,Unresolved,[QUARANTINE],,No schema code: geom is NOT NULL so the record cannot load (Park East). Do not publish,Yes
+coordinate_method,route/centerline intersection,route_intersection,core.coordinate_method,,No
+coordinate_method,route topology (shared node),route_topology,core.coordinate_method,,No
+coordinate_method,route-aligned,route_aligned,core.coordinate_method,,No
+coordinate_method,address geocode (Census/ArcGIS),address_geocode,core.coordinate_method,,No
+coordinate_method,address geocode (manual resolution),address_geocode,core.coordinate_method,,No
+coordinate_method,OSM way {id},osm_feature,core.coordinate_method,Pattern; {…} matches any text,No
+coordinate_method,Wikipedia ({address}),third_party,core.coordinate_method,Pattern; {…} matches any text,No
+coordinate_method,park directory GPS,third_party,core.coordinate_method,,No
+coordinate_method,Official address geocode: {address},address_geocode,core.coordinate_method,Pattern; {…} matches any text,No
+coordinate_method,Published address geocode: {address},address_geocode,core.coordinate_method,Pattern; {…} matches any text,No
+coordinate_method,City inventory address geocode: {address},address_geocode,core.coordinate_method,Pattern; {…} matches any text,No
+coordinate_method,Jayne-Lasky Park official address geocode,address_geocode,core.coordinate_method,,No
+coordinate_method,{feature} footprint centroid,osm_feature,core.coordinate_method,Pattern; {…} matches any text; Centroid of an OpenStreetMap feature (see Geocoding_Audit source URL),No
+coordinate_method,{feature} boundary centroid,osm_feature,core.coordinate_method,Pattern; {…} matches any text; Centroid of an OpenStreetMap feature (see Geocoding_Audit source URL),No
+coordinate_method,Bridge geometry centroid,osm_feature,core.coordinate_method,Centroid of an OpenStreetMap feature (see Geocoding_Audit source URL),No
+coordinate_method,Mapped athletic field centroid ({name}),osm_feature,core.coordinate_method,Pattern; {…} matches any text; Centroid of an OpenStreetMap feature (see Geocoding_Audit source URL),No
+coordinate_method,{place} neighborhood/park representative point,osm_feature,core.coordinate_method,Pattern; {…} matches any text; Centroid of an OpenStreetMap feature (see Geocoding_Audit source URL),No
+coordinate_method,Joseph Campau historic downtown area centroid,third_party,core.coordinate_method,"Area centroid from the National Park Service district page, not OSM",No
+coordinate_method,Matched to AP-{id} ({method}),[INHERIT],,Pattern; translate the inner {method} with these rules,No
+coordinate_method,Matched to access point AP-{id} ({method}),[INHERIT],,Pattern; translate the inner {method} with these rules,No
+coordinate_method,No unique match,[QUARANTINE],,No coordinate exists; record cannot load,Yes
+access_tier,major,major_access,core.access_point_subtype,,No
+access_tier,major (pavilion),major_access,core.access_point_subtype,Framework Plan defines two tiers (Vol 1 p65); the pavilion is a feature of a major access point. Raw text kept in staging tier_raw,No
+access_tier,minor,minor_access,core.access_point_subtype,,No
 access_tier,TBD_framework_map,[NULL],,Do not guess,Yes
-built_status,likely_existing,likely_existing,,,No
+built_status,likely_existing,likely_existing,,Not a vocabulary. core.access_point.is_built is boolean NOT NULL; mapping is an open decision. Keep raw in staging,Yes
 built_status,proposed_or_existing_TBD,[NULL],,Do not guess,Yes
 review_flag,[blank],false,,,No
 review_flag,check / YES / any nonblank text,true,,Preserve original text in provenance,Yes
