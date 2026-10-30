@@ -316,7 +316,7 @@ export default {
       if (aborted.length) {
         await client.query(
           `UPDATE staging.etl_run SET status='failed', finished_at=now(),
-                  error_message=$2 WHERE id=$1`,
+                  error_text=$2 WHERE id=$1`,
           [runId, `topology rebuild aborted: ${aborted.map(a => a.flag_type).join(', ')}`]
         );
         console.error('TOPOLOGY ABORTED — core data is loaded, routing topology is UNCHANGED.');
@@ -341,7 +341,7 @@ export default {
       await client.query('ROLLBACK').catch(() => {});
       if (runId) {
         await client.query(
-          `UPDATE staging.etl_run SET status='failed', finished_at=now(), error_message=$2 WHERE id=$1`,
+          `UPDATE staging.etl_run SET status='failed', finished_at=now(), error_text=$2 WHERE id=$1`,
           [runId, String(err.message).slice(0, 1000)]
         ).catch(() => {});
       }
