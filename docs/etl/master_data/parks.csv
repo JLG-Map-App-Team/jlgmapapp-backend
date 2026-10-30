@@ -1,0 +1,34 @@
+Name,poi_type_code,Lat,Lon,Metres to centreline,Nearest segment,Coordinate source,Status
+Palmer Park,park,42.4254627,-83.1172509,,,Park boundary centroid,have
+Mackay-Modern Park,park,42.4185355,-83.0726063,0,Jos Campau (McNichols to Carpenter),Matched to access point AP-34 (route-aligned),have
+Ford Park,park,42.41362597,-83.09506223,0,Conrail (Woodward to Dequindre),Matched to access point AP-36 (route-aligned),have
+Ernest T. Ford Recreation Center,park,42.4088157,-83.1070221,,,Official address geocode: 10 Pitkin St,have
+Ives Field,park,42.4084634,-83.1084712,,,Mapped athletic field centroid (Reggie McKenzie Field),have
+Ben Hill Playground,park,42.40351,-83.12057,,,Playground boundary centroid,have
+Salsinger Playfield,park,42.3991121,-83.1277394,0,Conrail (Livernois to Rosa Parks),Matched to access point AP-38 (OSM way 180752369),have
+Jayne Playground,park,42.4131663,-83.0597699,,,Jayne-Lasky Park official address geocode,have
+Pope Park,park,42.3982549,-83.0591048,,,Park boundary centroid,have
+Veterans Park / Hamtramck Stadium,park,42.3904848,-83.0536539,0,Jos Campau (Holbrook to Hamtramck Drive),Matched to access point AP-33 (Wikipedia (3201 Roosevelt St)),have
+Intervale-Roselawn Playground,park,42.3915896,-83.1484933,0,Conrail (Davison to Intervale),Matched to access point AP-39 (route-aligned),have
+Littlefield Playfield,park,42.3827883,-83.1554211,,,Park boundary centroid,have
+Laker Park,park,42.3484326,-83.1455421,,,Park boundary centroid,have
+Graham Park,park,42.3419924,-83.1540475,,,"Published address geocode: 8763 Graham St, Dearborn",have
+Forest Park,park,42.3574028,-83.0469082,,,Park boundary centroid,have
+Dues Playground,park,42.3453604,-83.0349601,,,City inventory address geocode: 1991 Antietam Ave,have
+Park East,park,,,,,No unique match,pending_manual_review
+Lafayette Park,park,42.3398647,-83.0348037,,,Lafayette Park neighborhood/park representative point,have
+Campus Martius,park,42.3315615,-83.0466224,,,Park boundary centroid,have
+Roosevelt Park,park,42.3304297,-83.0772607,,,Park boundary centroid,have
+Milliken State Park,park,42.3320145,-83.0277516,,,State park boundary centroid,have
+Hart Plaza,park,42.3274176,-83.04456,,,Plaza boundary centroid,have
+Ralph C. Wilson Jr. Centennial Park,park,42.322,-83.0624,59.5,West Jefferson (8th to Rosa Parks),Matched to access point AP-52 (park directory GPS),have
+Clark Park,park,42.3171489,-83.0924049,,,Park boundary centroid,have
+Riverside Park,park,42.31247486,-83.08024525,0,West Riverfront (Rosa Parks to Grand Boulevard),Matched to access point AP-49 (route-aligned),have
+Romanowski Park,park,42.326102,-83.142627,39.5,Romanowski Park,Matched to access point AP-40 (OSM way 32463352),have
+Holy Cross Cemetery,park,42.3147633,-83.1404365,,,Cemetery boundary centroid,have
+Patton Park,park,42.310895,-83.138243,156.2,Patton Park,Matched to access point AP-42 (OSM way 58788861),have
+Weiss Playground,park,42.305236,-83.135968,38.9,Woodmere (Vernor to Fort),Matched to access point AP-44 (OSM way 256978508),have
+Higgins Park Playground,park,42.298164,-83.131139,,,Published address geocode: 9200 Olivet St,have
+Woodmere Cemetery,park,42.2957841,-83.1310491,0,Woodmere (Vernor to Fort),Matched to access point AP-45 (route-aligned),have
+Delray Recreation Center,park,42.2900872,-83.1287303,,,Recreation center footprint centroid,have
+Fort Wayne,park,42.3011836,-83.0979062,0,"GHIB (Junction, Fort, Campbell, Jefferson, Green)",Matched to access point AP-47 (OSM way 106283810),have

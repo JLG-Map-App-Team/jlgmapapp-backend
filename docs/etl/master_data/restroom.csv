@@ -1,0 +1,2 @@
+Name,poi_type_code,Lat,Lon,Metres to centreline,Nearest segment,Coordinate method,Source,Note
+Warren Gateway Restroom,restroom,42.344817,-83.147885,0.7,West Warren (Lonyo to Conrail),route topology (shared node),JLG (AP-25 Warren Ave),"Warren is a major access point with a pavilion per Framework Vol.2 p.499. Coordinate locates the access point, not a surveyed restroom building."

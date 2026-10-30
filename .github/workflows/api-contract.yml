@@ -107,6 +107,15 @@ jobs:
       - name: Load the route segments
         run: npm run etl:segments
 
+      # Access points, the Warren restroom, Framework Plan destinations and
+      # parks, from the committed CSVs in docs/etl/master_data. Runs after the
+      # segments because it computes each record's nearest segment and distance.
+      - name: Load the Master Data
+        run: npm run etl:master
+
+      - name: Master Data test (counts, quarantine, idempotent re-load)
+        run: npm run test:master
+
       # Was `npm test`, undefined. Asserts the state the load left behind —
       # 51 segments, geom in 4326, geom_proj in 26917, unique source_refs, and
       # an etl_run recorded as succeeded rather than topology-aborted.
